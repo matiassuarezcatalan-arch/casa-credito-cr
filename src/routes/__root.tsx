@@ -34,11 +34,15 @@ export const Route = createRootRoute({
       { title: "Inversiones ANACO — Préstamos Hipotecarios" },
       { name: "description", content: "Préstamos con garantía hipotecaria en Costa Rica. Más de 40 años de experiencia." },
       { name: "author", content: "Inversiones ANACO" },
-      { property: "og:title", content: "Inversiones ANACO" },
-      { property: "og:description", content: "Préstamos con garantía hipotecaria en Costa Rica." },
+      { property: "og:title", content: "Inversiones ANACO — Préstamos Hipotecarios" },
+      { property: "og:description", content: "Préstamos con garantía hipotecaria en Costa Rica. Más de 40 años de experiencia." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Inversiones ANACO — Préstamos Hipotecarios" },
+      { name: "twitter:description", content: "Préstamos con garantía hipotecaria en Costa Rica. Más de 40 años de experiencia." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/HxjngESvgCeLvgpplqnLDGyTbVk2/social-images/social-1775960446447-ANACO_LOGO.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/HxjngESvgCeLvgpplqnLDGyTbVk2/social-images/social-1775960446447-ANACO_LOGO.webp" },
     ],
     links: [
       {
