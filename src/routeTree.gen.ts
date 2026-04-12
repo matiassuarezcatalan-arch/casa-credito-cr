@@ -9,38 +9,65 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrestamosRouteImport } from './routes/prestamos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 
+const PrestamosRoute = PrestamosRouteImport.update({
+  id: '/prestamos',
+  path: '/prestamos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrestamosPrestamoPersonalRoute =
+  PrestamosPrestamoPersonalRouteImport.update({
+    id: '/prestamo-personal',
+    path: '/prestamo-personal',
+    getParentRoute: () => PrestamosRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/prestamos': typeof PrestamosRouteWithChildren
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/prestamos': typeof PrestamosRouteWithChildren
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/prestamos': typeof PrestamosRouteWithChildren
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/prestamos' | '/prestamos/prestamo-personal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/prestamos' | '/prestamos/prestamo-personal'
+  id: '__root__' | '/' | '/prestamos' | '/prestamos/prestamo-personal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrestamosRoute: typeof PrestamosRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/prestamos': {
+      id: '/prestamos'
+      path: '/prestamos'
+      fullPath: '/prestamos'
+      preLoaderRoute: typeof PrestamosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +75,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/prestamos/prestamo-personal': {
+      id: '/prestamos/prestamo-personal'
+      path: '/prestamo-personal'
+      fullPath: '/prestamos/prestamo-personal'
+      preLoaderRoute: typeof PrestamosPrestamoPersonalRouteImport
+      parentRoute: typeof PrestamosRoute
+    }
   }
 }
 
+interface PrestamosRouteChildren {
+  PrestamosPrestamoPersonalRoute: typeof PrestamosPrestamoPersonalRoute
+}
+
+const PrestamosRouteChildren: PrestamosRouteChildren = {
+  PrestamosPrestamoPersonalRoute: PrestamosPrestamoPersonalRoute,
+}
+
+const PrestamosRouteWithChildren = PrestamosRoute._addFileChildren(
+  PrestamosRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrestamosRoute: PrestamosRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

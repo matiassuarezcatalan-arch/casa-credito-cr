@@ -135,7 +135,7 @@ export default function LoanTypesSection() {
                 <p className="mb-2 text-sm text-muted-foreground">Créditos de hasta:</p>
                 <p className="mb-6 text-4xl font-extrabold text-foreground">{tab.credito}</p>
                 <a
-                  href="#calculadora"
+                  href={activeTab === 1 ? "/prestamos/prestamo-personal" : "#calculadora"}
                   className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
                 >
                   Obtener Mi Credito
