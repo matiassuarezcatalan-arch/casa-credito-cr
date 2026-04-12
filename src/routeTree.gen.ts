@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrestamosPrestamoPersonalRoute =
+  PrestamosPrestamoPersonalRouteImport.update({
+    id: '/prestamos/prestamo-personal',
+    path: '/prestamos/prestamo-personal',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/prestamos/prestamo-personal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/prestamos/prestamo-personal'
+  id: '__root__' | '/' | '/prestamos/prestamo-personal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrestamosPrestamoPersonalRoute: typeof PrestamosPrestamoPersonalRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/prestamos/prestamo-personal': {
+      id: '/prestamos/prestamo-personal'
+      path: '/prestamos/prestamo-personal'
+      fullPath: '/prestamos/prestamo-personal'
+      preLoaderRoute: typeof PrestamosPrestamoPersonalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrestamosPrestamoPersonalRoute: PrestamosPrestamoPersonalRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
