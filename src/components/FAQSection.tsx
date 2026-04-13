@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import AnimateIn from "./AnimateIn";
 
 const faqs = [
   {
@@ -22,29 +23,33 @@ export default function FAQSection() {
   return (
     <section className="bg-background px-6 py-20">
       <div className="mx-auto max-w-4xl">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-          Preguntas Frecuentes
-        </p>
-        <h2 className="mb-10 text-3xl font-extrabold text-foreground md:text-4xl">
-          ¿Tenés dudas? Encontrá respuestas en nuestra sección de Preguntas Frecuentes.
-        </h2>
+        <AnimateIn>
+          <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Preguntas Frecuentes
+          </p>
+          <h2 className="mb-10 text-3xl font-extrabold text-foreground md:text-4xl">
+            ¿Tenés dudas? Encontrá respuestas en nuestra sección de Preguntas Frecuentes.
+          </h2>
+        </AnimateIn>
 
         <div className="space-y-2">
           {faqs.map((faq, i) => (
-            <div key={i} className="rounded-xl bg-alt-bg">
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-medium text-foreground"
-              >
-                {faq.q}
-                {open === i ? <Minus size={18} /> : <Plus size={18} />}
-              </button>
-              {open === i && (
-                <div className="px-6 pb-4 text-sm text-muted-foreground animate-in fade-in slide-in-from-top-1 duration-200">
-                  {faq.a}
-                </div>
-              )}
-            </div>
+            <AnimateIn key={i} delay={i * 100}>
+              <div className="rounded-xl bg-alt-bg transition-all duration-300 hover:shadow-sm">
+                <button
+                  onClick={() => setOpen(open === i ? null : i)}
+                  className="flex w-full items-center justify-between px-6 py-4 text-left text-sm font-medium text-foreground"
+                >
+                  {faq.q}
+                  {open === i ? <Minus size={18} /> : <Plus size={18} />}
+                </button>
+                {open === i && (
+                  <div className="px-6 pb-4 text-sm text-muted-foreground animate-in fade-in slide-in-from-top-1 duration-200">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            </AnimateIn>
           ))}
         </div>
       </div>
