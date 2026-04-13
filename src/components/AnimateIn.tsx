@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import React, { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 
 interface AnimateInProps {
   children: ReactNode;
