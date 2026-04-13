@@ -1,3 +1,5 @@
+import AnimateIn from "./AnimateIn";
+
 const benefits = [
   { title: "Tu Casa Te Presta", desc: "Obtené préstamos más altos gracias al valor de tu inmueble y conseguí la liquidez que necesitás, rápido y sin trabas." },
   { title: "Pagás Solo por Lo Que Debés", desc: "Cuota y tasa fija del 2.25% mensual durante el plazo del crédito." },
@@ -14,31 +16,37 @@ export default function WhyChooseSection() {
   return (
     <section id="nosotros" className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-          <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Su Socio Financiero
+        <AnimateIn>
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Su Socio Financiero
+              </p>
+              <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">
+                ¿Por Qué Elegir ANACO para<br />tu Préstamo Hipotecario?
+              </h2>
+            </div>
+            <p className="max-w-sm text-muted-foreground md:text-right">
+              Más de 40 años siendo la solución a sus problemas financieros.
             </p>
-            <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">
-              ¿Por Qué Elegir ANACO para<br />tu Préstamo Hipotecario?
-            </h2>
           </div>
-          <p className="max-w-sm text-muted-foreground md:text-right">
-            Más de 40 años siendo la solución a sus problemas financieros.
-          </p>
-        </div>
+        </AnimateIn>
 
-        <div className="rounded-3xl bg-lavender p-8 md:p-12">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((b) => (
-              <div key={b.title}>
-                <div className="mb-3 h-2.5 w-2.5 rounded-full bg-primary" />
-                <h3 className="mb-2 text-lg font-bold text-foreground">{b.title}</h3>
-                <p className="text-sm text-muted-foreground">{b.desc}</p>
-              </div>
-            ))}
+        <AnimateIn delay={150}>
+          <div className="rounded-3xl bg-lavender p-8 md:p-12">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {benefits.map((b, i) => (
+                <AnimateIn key={b.title} delay={i * 100}>
+                  <div className="transition-all duration-300 hover:-translate-y-1">
+                    <div className="mb-3 h-2.5 w-2.5 rounded-full bg-primary" />
+                    <h3 className="mb-2 text-lg font-bold text-foreground">{b.title}</h3>
+                    <p className="text-sm text-muted-foreground">{b.desc}</p>
+                  </div>
+                </AnimateIn>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { AnacoLogo } from "./AnacoBanner";
+import AnimateIn from "./AnimateIn";
 
 const tabs = [
   {
@@ -65,85 +66,93 @@ export default function LoanTypesSection() {
   return (
     <section id="prestamos" className="bg-background px-6 py-20">
       <div className="mx-auto max-w-6xl text-center">
-        <div className="mb-4 flex items-center justify-center gap-2">
-          <AnacoLogo className="h-5 w-5" />
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            Inversiones ANACO
-          </span>
-        </div>
-        <h2 className="mb-10 text-3xl font-extrabold text-foreground md:text-4xl">
-          Nuestros Préstamos Hipotecarios.
-        </h2>
+        <AnimateIn>
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <AnacoLogo className="h-5 w-5" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              Inversiones ANACO
+            </span>
+          </div>
+        </AnimateIn>
+        <AnimateIn delay={100}>
+          <h2 className="mb-10 text-3xl font-extrabold text-foreground md:text-4xl">
+            Nuestros Préstamos Hipotecarios.
+          </h2>
+        </AnimateIn>
 
-        <div className="mb-8 flex flex-wrap justify-center gap-3">
-          {tabs.map((t, i) => (
-            <button
-              key={t.label}
-              onClick={() => { setActiveTab(i); setExpanded(false); }}
-              className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${
-                i === activeTab
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-primary/80 text-primary-foreground/90 hover:bg-primary/90"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="rounded-3xl bg-background p-8 shadow-lg md:p-12">
-          <div className="grid items-start gap-10 md:grid-cols-2">
-            <div className="text-left">
-              <p className="mb-2 text-sm font-semibold text-muted-foreground">{tab.label}</p>
-              <h3 className="mb-4 text-2xl font-extrabold text-foreground md:text-3xl">
-                {tab.headline}
-              </h3>
-              <p className="mb-6 text-muted-foreground">{tab.desc}</p>
-
+        <AnimateIn delay={200}>
+          <div className="mb-8 flex flex-wrap justify-center gap-3">
+            {tabs.map((t, i) => (
               <button
-                onClick={() => setExpanded(!expanded)}
-                className="flex items-center gap-3 rounded-xl border border-border px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+                key={t.label}
+                onClick={() => { setActiveTab(i); setExpanded(false); }}
+                className={`rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.03] ${
+                  i === activeTab
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-primary/80 text-primary-foreground/90 hover:bg-primary/90"
+                }`}
               >
-                Conoce Sus Beneficios
-                {expanded ? <Minus size={16} /> : <Plus size={16} />}
+                {t.label}
               </button>
+            ))}
+          </div>
+        </AnimateIn>
 
-              {expanded && (
-                <div className="mt-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <div>
-                    <h4 className="mb-2 font-bold text-foreground">Beneficios</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
-                      {tab.beneficios.map((b) => (
-                        <li key={b}>• {b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 font-bold text-foreground">Usos más comunes</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
-                      {tab.usos.map((u) => (
-                        <li key={u}>• {u}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-            </div>
+        <AnimateIn delay={300}>
+          <div className="rounded-3xl bg-background p-8 shadow-lg md:p-12">
+            <div className="grid items-start gap-10 md:grid-cols-2">
+              <div className="text-left">
+                <p className="mb-2 text-sm font-semibold text-muted-foreground">{tab.label}</p>
+                <h3 className="mb-4 text-2xl font-extrabold text-foreground md:text-3xl">
+                  {tab.headline}
+                </h3>
+                <p className="mb-6 text-muted-foreground">{tab.desc}</p>
 
-            <div className="flex items-center justify-center">
-              <div className="w-full max-w-sm rounded-2xl bg-lavender p-10 text-center">
-                <p className="mb-2 text-sm text-muted-foreground">Créditos de hasta:</p>
-                <p className="mb-6 text-4xl font-extrabold text-foreground">{tab.credito}</p>
-                <a
-                  href={activeTab === 1 ? "/prestamos/prestamo-personal" : "#calculadora"}
-                  className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                <button
+                  onClick={() => setExpanded(!expanded)}
+                  className="flex items-center gap-3 rounded-xl border border-border px-5 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-accent hover:scale-[1.02]"
                 >
-                  Obtener Mi Credito
-                </a>
+                  Conoce Sus Beneficios
+                  {expanded ? <Minus size={16} /> : <Plus size={16} />}
+                </button>
+
+                {expanded && (
+                  <div className="mt-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                    <div>
+                      <h4 className="mb-2 font-bold text-foreground">Beneficios</h4>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        {tab.beneficios.map((b) => (
+                          <li key={b}>• {b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="mb-2 font-bold text-foreground">Usos más comunes</h4>
+                      <ul className="space-y-1 text-sm text-muted-foreground">
+                        {tab.usos.map((u) => (
+                          <li key={u}>• {u}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex items-center justify-center">
+                <div className="w-full max-w-sm rounded-2xl bg-lavender p-10 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <p className="mb-2 text-sm text-muted-foreground">Créditos de hasta:</p>
+                  <p className="mb-6 text-4xl font-extrabold text-foreground">{tab.credito}</p>
+                  <a
+                    href={activeTab === 1 ? "/prestamos/prestamo-personal" : "#calculadora"}
+                    className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
+                  >
+                    Obtener Mi Credito
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );
