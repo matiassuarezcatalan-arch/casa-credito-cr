@@ -44,7 +44,7 @@ export default function Header() {
 
         <a
           href="#calculadora"
-          className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
         >
           Calcular Mi Credito
         </a>
