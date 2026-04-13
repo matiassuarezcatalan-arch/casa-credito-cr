@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
+import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/prestamos.consolidacion-de-deudas'
 
 const PrestamosRoute = PrestamosRouteImport.update({
   id: '/prestamos',
@@ -29,29 +30,51 @@ const PrestamosPrestamoPersonalRoute =
     path: '/prestamo-personal',
     getParentRoute: () => PrestamosRoute,
   } as any)
+const PrestamosConsolidacionDeDeudasRoute =
+  PrestamosConsolidacionDeDeudasRouteImport.update({
+    id: '/consolidacion-de-deudas',
+    path: '/consolidacion-de-deudas',
+    getParentRoute: () => PrestamosRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/prestamos': typeof PrestamosRouteWithChildren
+  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/prestamos': typeof PrestamosRouteWithChildren
+  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/prestamos': typeof PrestamosRouteWithChildren
+  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/prestamos' | '/prestamos/prestamo-personal'
+  fullPaths:
+    | '/'
+    | '/prestamos'
+    | '/prestamos/consolidacion-de-deudas'
+    | '/prestamos/prestamo-personal'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/prestamos' | '/prestamos/prestamo-personal'
-  id: '__root__' | '/' | '/prestamos' | '/prestamos/prestamo-personal'
+  to:
+    | '/'
+    | '/prestamos'
+    | '/prestamos/consolidacion-de-deudas'
+    | '/prestamos/prestamo-personal'
+  id:
+    | '__root__'
+    | '/'
+    | '/prestamos'
+    | '/prestamos/consolidacion-de-deudas'
+    | '/prestamos/prestamo-personal'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -82,14 +105,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrestamosPrestamoPersonalRouteImport
       parentRoute: typeof PrestamosRoute
     }
+    '/prestamos/consolidacion-de-deudas': {
+      id: '/prestamos/consolidacion-de-deudas'
+      path: '/consolidacion-de-deudas'
+      fullPath: '/prestamos/consolidacion-de-deudas'
+      preLoaderRoute: typeof PrestamosConsolidacionDeDeudasRouteImport
+      parentRoute: typeof PrestamosRoute
+    }
   }
 }
 
 interface PrestamosRouteChildren {
+  PrestamosConsolidacionDeDeudasRoute: typeof PrestamosConsolidacionDeDeudasRoute
   PrestamosPrestamoPersonalRoute: typeof PrestamosPrestamoPersonalRoute
 }
 
 const PrestamosRouteChildren: PrestamosRouteChildren = {
+  PrestamosConsolidacionDeDeudasRoute: PrestamosConsolidacionDeDeudasRoute,
   PrestamosPrestamoPersonalRoute: PrestamosPrestamoPersonalRoute,
 }
 

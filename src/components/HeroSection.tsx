@@ -1,21 +1,6 @@
 import heroImage from "@/assets/ANACO_Hero_extralarge.jpg";
-import { useEffect, useState } from "react";
 
 export default function HeroSection() {
-  const [loaded, setLoaded] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setReducedMotion(prefersReduced);
-    // Small delay to let the DOM paint first
-    const timer = setTimeout(() => setLoaded(true), 50);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const animate = !reducedMotion;
-  const baseTransition = "transition-all duration-500 ease-out";
-
   return (
     <section className="px-6 pb-12 pt-4">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl">
@@ -29,46 +14,27 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-xl px-8 md:px-16">
-            <p
-              className={`mb-3 text-sm font-medium text-primary-foreground/80 ${baseTransition} ${
-                animate && !loaded ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-            >
+            <p className="mb-3 text-sm font-medium text-primary-foreground/80">
               ¿Necesitás Dinero y Tenés una Propiedad?
             </p>
-            <h1
-              className={`mb-4 text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl ${baseTransition} ${
-                animate && !loaded ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-              style={{ transitionDelay: animate ? "100ms" : "0ms" }}
-            >
+            <h1 className="mb-4 text-4xl font-extrabold leading-tight text-primary-foreground md:text-5xl">
               Préstamos con Garantía Hipotecaria
             </h1>
-            <p
-              className={`mb-8 text-sm leading-relaxed text-primary-foreground/85 md:text-base ${baseTransition} ${
-                animate && !loaded ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-              style={{ transitionDelay: animate ? "200ms" : "0ms" }}
-            >
+            <p className="mb-8 text-sm leading-relaxed text-primary-foreground/85 md:text-base">
               Obtené liquidez inmediata de ₡1 millón hasta ₡25 millones para
               cualquier propósito: consolidación de deudas, capital de inversión,
               remodelación de inmueble o uso personal.
             </p>
-            <div
-              className={`flex flex-wrap gap-4 ${baseTransition} ${
-                animate && !loaded ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-              }`}
-              style={{ transitionDelay: animate ? "350ms" : "0ms" }}
-            >
+            <div className="flex flex-wrap gap-4">
               <a
                 href="#calculadora"
-                className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
+                className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Obtener Mi Credito
               </a>
               <a
                 href="#prestamos"
-                className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03]"
+                className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Tipos de Prestamos
               </a>

@@ -1,4 +1,5 @@
 import AnimateIn from "./AnimateIn";
+import { cn } from "@/lib/utils";
 
 const benefits = [
   { title: "Tu Casa Te Presta", desc: "Obtené préstamos más altos gracias al valor de tu inmueble y conseguí la liquidez que necesitás, rápido y sin trabas." },
@@ -12,9 +13,19 @@ const benefits = [
   { title: "Condiciones Flexibles", desc: "Plazos de 6 meses hasta 10 años. Cuotas fijas adaptadas a tu presupuesto real." },
 ];
 
-export default function WhyChooseSection() {
+interface WhyChooseSectionProps {
+  headingSuffix?: string;
+  subtext?: string;
+  className?: string;
+}
+
+export default function WhyChooseSection({
+  headingSuffix = "tu Préstamo Hipotecario?",
+  subtext = "Más de 40 años siendo la solución a sus problemas financieros.",
+  className,
+}: WhyChooseSectionProps = {}) {
   return (
-    <section id="nosotros" className="bg-alt-bg px-6 py-20">
+    <section id="nosotros" className={cn("bg-alt-bg px-6 py-20", className)}>
       <div className="mx-auto max-w-6xl">
         <AnimateIn>
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -23,11 +34,11 @@ export default function WhyChooseSection() {
                 Su Socio Financiero
               </p>
               <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">
-                ¿Por Qué Elegir ANACO para<br />tu Préstamo Hipotecario?
+                ¿Por Qué Elegir ANACO para<br />{headingSuffix}
               </h2>
             </div>
             <p className="max-w-sm text-muted-foreground md:text-right">
-              Más de 40 años siendo la solución a sus problemas financieros.
+              {subtext}
             </p>
           </div>
         </AnimateIn>
