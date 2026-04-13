@@ -1,4 +1,4 @@
-import heroImage from "@/assets/hero-meeting.jpg";
+import heroImage from "@/assets/ANACO_Hero_extralarge.jpg";
 import { useEffect, useState } from "react";
 
 export default function HeroSection() {
