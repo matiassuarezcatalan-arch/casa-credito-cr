@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[2fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <AnacoLogo className="h-14 w-14" />
+            <a href="/"><AnacoLogo className="h-14 w-14" /></a>
             <div>
               <p className="text-sm font-bold text-foreground">INVERSIONES ANACO</p>
               <p className="text-xs text-muted-foreground">Créditos Hipotecarios</p>

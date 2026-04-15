@@ -33,7 +33,7 @@ function HeroSection() {
           <p className="mb-8 text-lg text-muted-foreground">
             Accedé a financiamiento flexible sin justificar el destino — para educación, salud, viajes o cualquier necesidad personal.
           </p>
-          <a href="#calculadora" className="mb-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+          <a href="/calcular-credito" className="mb-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
             Solicitar Ahora
           </a>
           <ul className="mt-6 space-y-3">
@@ -59,7 +59,7 @@ function HeroSection() {
 /* ─── SECTION 2: HOW TO GET ─── */
 function HowToGetSection() {
   const steps = [
-    { n: 1, title: "Descubrí Cuánto Podés Obtener", desc: <>Ingresá a <a href="#calculadora" className="underline">nuestra calculadora</a> y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.</> },
+    { n: 1, title: "Descubrí Cuánto Podés Obtener", desc: <>Ingresá a <a href="/calcular-credito" className="underline">nuestra calculadora</a> y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.</> },
     { n: 2, title: "Te Contáctamos", desc: <>Nos reunimos para revisar tu documentación y confirmar que cumplís con los requisitos. Consultá la <a href="#requisitos" className="underline">sección de requisitos</a> para más información.</> },
     { n: 3, title: "Firmás y Recibís tu Dinero", desc: "Una vez aprobado, coordinamos la firma en notaría y transferimos el dinero directamente a tu cuenta bancaria — así de fácil." },
   ];
@@ -79,7 +79,7 @@ function HowToGetSection() {
               </div>
             ))}
           </div>
-          <a href="#calculadora" className="mt-10 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+          <a href="/calcular-credito" className="mt-10 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
             Solicitar Ahora
           </a>
         </div>
@@ -129,7 +129,7 @@ function UseCasesSection() {
           ))}
         </div>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href="#calculadora" className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">Solicitar Ahora</a>
+          <a href="/calcular-credito" className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">Solicitar Ahora</a>
           <a href="#como-funciona" className="rounded-full border-2 border-primary px-8 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground">¿Cómo Funciona?</a>
         </div>
       </div>
@@ -235,7 +235,7 @@ function HowItWorksSection() {
           <p className="mb-6 text-muted-foreground leading-relaxed">
             Los préstamos personales en Costa Rica están disponibles desde ₡1 millón hasta ₡5 millones, con plazos de hasta 10 años y una tasa fija mensual sobre saldo, lo que significa que tu cuota disminuye conforme vas pagando el capital. El proceso incluye una evaluación de la propiedad, revisión de documentos y firma ante notario, tras lo cual el dinero se deposita directamente en tu cuenta bancaria.
           </p>
-          <a href="#calculadora" className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">Solicitar Ahora</a>
+          <a href="/calcular-credito" className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">Solicitar Ahora</a>
         </div>
       </div>
     </section>
@@ -311,7 +311,7 @@ function HomeEquitySection() {
           <p className="mb-4 text-muted-foreground leading-relaxed">Conseguir un préstamo personal puede ser un proceso complicado en los bancos tradicionales, que exigen extensos requisitos incluso a quienes tienen buenas intenciones de pago. Si sos propietario de un inmueble, podés usar ese activo como respaldo para acceder a mejores condiciones con ANACO.</p>
           <p className="mb-4 text-muted-foreground leading-relaxed">ANACO ayuda a los costarricenses a aprovechar el valor acumulado en sus propiedades para cubrir necesidades personales — desde gastos médicos hasta proyectos familiares. Muchos solicitantes prefieren un préstamo hipotecario personal sobre los productos convencionales porque es más flexible, accesible y tiene tasas más competitivas.</p>
           <p className="mb-6 text-muted-foreground leading-relaxed">Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés el capital disponible. Con ANACO podés acceder hasta el 60% de ese valor, con montos que pueden cubrir la totalidad de tus necesidades financieras personales.</p>
-          <a href="#calculadora" className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">Solicitar Ahora</a>
+          <a href="/calcular-credito" className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">Solicitar Ahora</a>
         </div>
       </div>
     </section>
@@ -415,7 +415,7 @@ function TrustBanner() {
         <p className="mx-auto mb-8 max-w-2xl text-primary-foreground/80">
           A diferencia de los bancos tradicionales, con ANACO solo necesitás ser propietario de un inmueble para calificar. Hacemos el proceso lo más rápido y sencillo posible. Aplicar no afecta tu puntaje crediticio.
         </p>
-        <a href="#calculadora" className="inline-block rounded-full bg-primary-foreground px-8 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90">Solicitar Ahora</a>
+        <a href="/calcular-credito" className="inline-block rounded-full bg-primary-foreground px-8 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90">Solicitar Ahora</a>
       </div>
     </section>
   );

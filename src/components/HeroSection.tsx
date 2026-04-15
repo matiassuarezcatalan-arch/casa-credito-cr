@@ -27,7 +27,7 @@ export default function HeroSection() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href="#calculadora"
+                href="/calcular-credito"
                 className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Obtener Mi Credito

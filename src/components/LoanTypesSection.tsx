@@ -146,7 +146,7 @@ export default function LoanTypesSection() {
                     href={
                       activeTab === 0 ? "/prestamos/consolidacion-de-deudas" :
                       activeTab === 1 ? "/prestamos/prestamo-personal" :
-                      "#calculadora"
+                      "/calcular-credito"
                     }
                     className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
                   >

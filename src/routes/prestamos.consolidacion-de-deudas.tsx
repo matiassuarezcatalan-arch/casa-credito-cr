@@ -46,7 +46,7 @@ function HeroSection() {
             Unificá todas tus deudas en un solo pago mensual con una tasa fija del 2.25% mensual y ahorrá hasta un 60% en intereses.
           </p>
           <a
-            href="#calculadora"
+            href="/calcular-credito"
             className="mb-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -83,7 +83,7 @@ function HowToGetSection() {
       desc: (
         <>
           Ingresá a{" "}
-          <a href="#calculadora" className="underline">
+          <a href="/calcular-credito" className="underline">
             nuestra calculadora
           </a>{" "}
           y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
@@ -135,7 +135,7 @@ function HowToGetSection() {
             ))}
           </div>
           <a
-            href="#calculadora"
+            href="/calcular-credito"
             className="mt-10 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -207,7 +207,7 @@ function UseCasesSection() {
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="#calculadora"
+            href="/calcular-credito"
             className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -305,7 +305,7 @@ function HowItWorksSection() {
             El proceso incluye una tasación de la propiedad, revisión de documentación y firma ante notario, tras lo cual los fondos se transfieren directamente a tu cuenta bancaria. A diferencia de los bancos tradicionales, ANACO evalúa tu capacidad real de pago y el valor de tu inmueble, no solo tu historial crediticio, lo que hace el proceso más rápido y accesible.
           </p>
           <a
-            href="#calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -449,7 +449,7 @@ function HomeEquitySection() {
             Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayás vivido en tu hogar, más capital tenés — lo que significa que podés acceder a montos mayores. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad para cubrir la totalidad o gran parte de tus deudas pendientes.
           </p>
           <a
-            href="#calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -664,7 +664,7 @@ function TrustBanner() {
             A diferencia de los bancos tradicionales, con ANACO solo necesitás ser propietario de un inmueble para calificar. Hacemos el proceso lo más rápido y sencillo posible. Aplicar no afecta tu puntaje crediticio.
           </p>
           <a
-            href="#calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary-foreground px-8 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90"
           >
             Solicitar Ahora

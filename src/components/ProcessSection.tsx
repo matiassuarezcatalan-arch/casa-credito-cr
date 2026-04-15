@@ -8,7 +8,7 @@ const steps = [
     title: "Descubrí Cuánto Podés Obtener",
     desc: (
       <>
-        <a href="#calculadora" className="underline">Ingresá a nuestra calculadora</a> y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
+        <a href="/calcular-credito" className="underline">Ingresá a nuestra calculadora</a> y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
       </>
     ),
   },
@@ -67,7 +67,7 @@ export default function ProcessSection() {
         <AnimateIn delay={500}>
           <div className="text-center">
             <a
-              href="#calculadora"
+              href="/calcular-credito"
               className="inline-block rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
             >
               Calcular Crédito
