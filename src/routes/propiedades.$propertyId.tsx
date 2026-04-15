@@ -68,18 +68,18 @@ function PropertyDetail() {
       <Header />
       <main>
         {/* ── SECTION 1 — PROPERTY HEADER ────────────────────────────────── */}
-        <section className="bg-background px-6 py-12 md:py-16">
+        <section className="bg-background px-4 py-8 md:px-6 md:py-16">
           <div className="mx-auto max-w-6xl">
             {/* Back link */}
             <a
               href="/propiedades"
-              className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               <ArrowLeft size={15} />
               Volver a Propiedades
             </a>
 
-            <div className="grid gap-8 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-3 md:gap-8">
               {/* Left — Image gallery (2/3) */}
               <div className="md:col-span-2">
                 <ImageGallery images={property.images} title={property.title} />
@@ -87,14 +87,14 @@ function PropertyDetail() {
 
               {/* Right — Info card (1/3) */}
               <AnimateIn delay={100}>
-                <div className="flex flex-col gap-5 rounded-3xl border border-border bg-background p-6 shadow-sm">
+                <div className="flex flex-col gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm md:gap-5 md:rounded-3xl md:p-6">
                   {/* Status badge */}
                   <span className="w-fit rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
                     {property.status}
                   </span>
 
                   {/* Title */}
-                  <h1 className="text-2xl font-bold text-foreground">
+                  <h1 className="text-xl font-bold text-foreground md:text-2xl">
                     {property.title}
                   </h1>
 
@@ -111,7 +111,7 @@ function PropertyDetail() {
                     <p className="mb-1 text-xs text-muted-foreground">
                       Valor de Tasación
                     </p>
-                    <p className="text-3xl font-bold text-primary">
+                    <p className="text-2xl font-bold text-primary md:text-3xl">
                       {formatCRC(property.price)}
                     </p>
                   </div>
@@ -119,7 +119,7 @@ function PropertyDetail() {
                     <p className="mb-1 text-xs text-muted-foreground">
                       Monto Financiado por ANACO
                     </p>
-                    <p className="text-xl font-bold text-foreground">
+                    <p className="text-lg font-bold text-foreground md:text-xl">
                       {formatCRC(property.loanAmount)}
                     </p>
                   </div>
@@ -127,8 +127,8 @@ function PropertyDetail() {
                   <hr className="border-border" />
 
                   {/* Quick stats 2×2 */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="rounded-2xl bg-muted px-4 py-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-xl bg-muted px-3 py-2.5 md:rounded-2xl md:px-4 md:py-3">
                       <p className="mb-1 text-xs text-muted-foreground">
                         Habitaciones
                       </p>
@@ -137,7 +137,7 @@ function PropertyDetail() {
                         {property.bedrooms}
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-muted px-4 py-3">
+                    <div className="rounded-xl bg-muted px-3 py-2.5 md:rounded-2xl md:px-4 md:py-3">
                       <p className="mb-1 text-xs text-muted-foreground">
                         Baños
                       </p>
@@ -146,7 +146,7 @@ function PropertyDetail() {
                         {property.bathrooms}
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-muted px-4 py-3">
+                    <div className="rounded-xl bg-muted px-3 py-2.5 md:rounded-2xl md:px-4 md:py-3">
                       <p className="mb-1 text-xs text-muted-foreground">
                         Área Construida
                       </p>
@@ -155,7 +155,7 @@ function PropertyDetail() {
                         {property.size} m²
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-muted px-4 py-3">
+                    <div className="rounded-xl bg-muted px-3 py-2.5 md:rounded-2xl md:px-4 md:py-3">
                       <p className="mb-1 text-xs text-muted-foreground">
                         Estacionamiento
                       </p>
@@ -188,7 +188,7 @@ function PropertyDetail() {
         </section>
 
         {/* ── SECTION 2 — PROPERTY DETAILS ───────────────────────────────── */}
-        <section className="px-6 py-16" style={{ backgroundColor: "#F5F5F7" }}>
+        <section className="px-4 py-10 md:px-6 md:py-16" style={{ backgroundColor: "#F5F5F7" }}>
           <div className="mx-auto max-w-6xl">
             <div className="grid gap-10 md:grid-cols-[2fr_1fr]">
               {/* Left — Description, features, details */}
@@ -307,7 +307,7 @@ function PropertyDetail() {
         </section>
 
         {/* ── SECTION 3 — OTHER PROPERTIES ───────────────────────────────── */}
-        <section className="bg-background px-6 py-16">
+        <section className="bg-background px-4 py-10 md:px-6 md:py-16">
           <div className="mx-auto max-w-6xl">
             <AnimateIn>
               <h2 className="mb-10 text-2xl font-extrabold text-foreground">
@@ -360,7 +360,7 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
     <AnimateIn>
       <div>
         {/* Hero image */}
-        <div className="mb-3 aspect-video w-full overflow-hidden rounded-3xl">
+        <div className="mb-3 aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-video md:rounded-3xl">
           <img
             src={hero!}
             alt={title}
@@ -371,12 +371,12 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
 
         {/* Thumbnails */}
         {images.length > 1 && (
-          <div className="flex gap-3">
+          <div className="flex gap-2 overflow-x-auto pb-1 md:gap-3">
             {images.map((img, i) => (
               <button
                 key={img}
                 onClick={() => setActiveIndex(i)}
-                className={`h-16 w-24 shrink-0 overflow-hidden rounded-xl border-2 transition-all duration-200 ${
+                className={`h-14 w-20 shrink-0 overflow-hidden rounded-lg border-2 transition-all duration-200 md:h-16 md:w-24 md:rounded-xl ${
                   i === activeIndex
                     ? "border-primary"
                     : "border-transparent opacity-60 hover:opacity-100"
