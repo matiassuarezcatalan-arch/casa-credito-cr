@@ -1,25 +1,28 @@
-import { Home, Coins, Banknote, Clock } from "lucide-react";
 import { AnacoLogo } from "./AnacoBanner";
 import AnimateIn from "./AnimateIn";
+import tuCasaTePresta from "../assets/Tu_Casa_Te_Presta_Transparent.png";
+import usaloComoQueras from "../assets/Usalo_Como_Queras_Transparent.png";
+import abonoExtraordinario from "../assets/Abono_Extraodinario_Transparent.png";
+import aprobacionAcelerada from "../assets/Aprobacion_Acelerada_Transparent.png";
 
 const features = [
   {
-    icon: Home,
+    icon: tuCasaTePresta,
     title: "Tu Inmueble Vale",
     desc: "Tu propiedad te da acceso a préstamos más altos, financiamos hasta el 60% del valor de la propiedad.",
   },
   {
-    icon: Coins,
+    icon: usaloComoQueras,
     title: "Pagás lo que Debés",
     desc: "Cuota fija del 2.25% mensual sobre el saldo que debés. Abonos extraordinarios sin penalización después del primer año.",
   },
   {
-    icon: Banknote,
+    icon: abonoExtraordinario,
     title: "Úsalo como Querás",
     desc: "Utiliza tu prestamo para lo que necesités: Consolidar deudas, capital de inversión, emergencias o consumo personal.",
   },
   {
-    icon: Clock,
+    icon: aprobacionAcelerada,
     title: "Aprobación Acelerada",
     desc: "Procesamos tu préstamo, aprobamos y depositamos sin hacerte esperar.",
   },
@@ -56,7 +59,7 @@ export default function WhatIsSection() {
             <AnimateIn key={f.title} delay={i * 100}>
               <div className="flex flex-col items-center rounded-2xl bg-lavender p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                 <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                  <f.icon className="h-8 w-8 text-primary" />
+                  <img src={f.icon} alt={f.title} className="h-8 w-8 object-contain" />
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-foreground">{f.title}</h3>
                 <p className="text-sm text-muted-foreground">{f.desc}</p>
