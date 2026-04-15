@@ -54,15 +54,15 @@ export default function WhatIsSection() {
           </p>
         </AnimateIn>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <AnimateIn key={f.title} delay={i * 100}>
-              <div className="flex flex-col items-center rounded-2xl bg-lavender p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <div className="flex h-full flex-col items-center rounded-2xl bg-lavender p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                 <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
                   <img src={f.icon} alt={f.title} className="h-8 w-8 object-contain" />
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-foreground">{f.title}</h3>
-                <p className="text-sm text-muted-foreground">{f.desc}</p>
+                <p className="flex-1 text-sm text-muted-foreground">{f.desc}</p>
               </div>
             </AnimateIn>
           ))}
