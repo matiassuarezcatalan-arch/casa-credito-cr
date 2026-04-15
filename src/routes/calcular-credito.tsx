@@ -127,7 +127,7 @@ function CalcularCredito() {
       <Header />
       <main>
         {/* ── SECTION 1 — CALCULATOR ─────────────────────────────────────── */}
-        <section className="bg-background px-6 py-20" ref={topRef}>
+        <section className="bg-background px-6 py-12 md:py-20" ref={topRef}>
           <div className="mx-auto max-w-6xl">
             {/* Page header */}
             <AnimateIn>
@@ -135,7 +135,7 @@ function CalcularCredito() {
                 <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
                   INVERSIONES ANACO
                 </p>
-                <h1 className="mb-4 text-4xl font-extrabold text-foreground md:text-5xl">
+                <h1 className="mb-4 text-2xl font-extrabold text-foreground md:text-5xl">
                   Calculá tu Préstamo Hipotecario
                 </h1>
                 <p className="mx-auto max-w-xl text-base text-muted-foreground">
@@ -160,14 +160,14 @@ function CalcularCredito() {
                     </span>
                   </div>
 
-                  <div className="bg-background p-8">
+                  <div className="bg-background p-4 md:p-8">
                     {/* Amount input */}
                     <div className="mb-6">
                       <label className="mb-2 block text-sm font-semibold text-foreground">
                         Monto del Préstamo
                       </label>
                       <div className="flex items-center rounded-2xl border border-border bg-background px-5 py-4 transition-all focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
-                        <span className="mr-3 text-2xl font-bold text-primary">
+                        <span className="mr-3 text-lg font-bold text-primary md:text-2xl">
                           ₡
                         </span>
                         <input
@@ -176,7 +176,7 @@ function CalcularCredito() {
                           value={rawInput}
                           onChange={handleAmountChange}
                           placeholder="10.000.000"
-                          className="min-w-0 flex-1 bg-transparent text-right text-2xl font-bold text-foreground outline-none placeholder:text-muted-foreground"
+                          className="min-w-0 flex-1 bg-transparent text-right text-lg font-bold text-foreground outline-none placeholder:text-muted-foreground md:text-2xl"
                         />
                       </div>
                       {!isValid && loanAmount > 0 && (
@@ -194,7 +194,7 @@ function CalcularCredito() {
                         <p className="mb-1 text-xs text-muted-foreground">
                           Tasa de Interés
                         </p>
-                        <p className="text-2xl font-bold text-primary">2.25%</p>
+                        <p className="text-lg font-bold text-primary md:text-2xl">2.25%</p>
                         <p className="mt-0.5 text-xs text-muted-foreground">
                           Mensual
                         </p>
@@ -203,7 +203,7 @@ function CalcularCredito() {
                         <p className="mb-1 text-xs text-muted-foreground">
                           Plazo
                         </p>
-                        <p className="text-2xl font-bold text-primary">4 años</p>
+                        <p className="text-lg font-bold text-primary md:text-2xl">4 años</p>
                         <p className="mt-0.5 text-xs text-muted-foreground">
                           48 meses
                         </p>
@@ -220,7 +220,7 @@ function CalcularCredito() {
                   <p className="mb-2 text-sm font-medium text-primary-foreground/70">
                     Cuota Mensual
                   </p>
-                  <p className="text-4xl font-extrabold text-primary-foreground">
+                  <p className="text-2xl font-extrabold text-primary-foreground md:text-4xl">
                     {isValid ? formatCRC(monthly) : "—"}
                   </p>
                 </div>
@@ -249,10 +249,10 @@ function CalcularCredito() {
 
             {/* CTAs */}
             <AnimateIn delay={150}>
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
                 <button
                   onClick={scrollToContact}
-                  className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
+                  className="w-full rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03] sm:w-auto"
                 >
                   Solicitar mi Crédito
                 </button>
@@ -260,7 +260,7 @@ function CalcularCredito() {
                   href="https://wa.me/50625516909"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-primary px-8 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:scale-[1.03] hover:bg-primary/5"
+                  className="w-full rounded-full border border-primary px-8 py-3 text-center text-sm font-semibold text-primary transition-all duration-300 hover:scale-[1.03] hover:bg-primary/5 sm:w-auto"
                 >
                   Contactar un Asesor por WhatsApp
                 </a>
@@ -306,7 +306,7 @@ function CalcularCredito() {
         <section
           id="contacto"
           ref={contactRef}
-          className="px-6 py-20"
+          className="px-6 py-12 md:py-20"
           style={{ backgroundColor: "#F5F5F7" }}
         >
           <div className="mx-auto max-w-6xl">
@@ -328,7 +328,7 @@ function CalcularCredito() {
             <div className="grid gap-8 md:grid-cols-2">
               {/* Left — Contact form */}
               <AnimateIn>
-                <div ref={formRef} className="rounded-3xl bg-background p-8 shadow-sm">
+                <div ref={formRef} className="rounded-3xl bg-background p-4 shadow-sm md:p-8">
                   <ContactForm
                     prefillAmount={formAmount}
                     scrollToForm={scrollToForm}
@@ -345,7 +345,7 @@ function CalcularCredito() {
         </section>
 
         {/* ── SECTION 3 — TESTIMONIALS ───────────────────────────────────── */}
-        <section className="bg-background px-6 py-20">
+        <section className="bg-background px-6 py-12 md:py-20">
           <div className="mx-auto max-w-6xl">
             <AnimateIn>
               <div className="mb-10 text-center">
@@ -364,7 +364,7 @@ function CalcularCredito() {
         </section>
 
         {/* ── SECTION 4 — FINAL CTA BANNER ──────────────────────────────── */}
-        <section className="bg-primary px-6 py-20">
+        <section className="bg-primary px-6 py-12 md:py-20">
           <AnimateIn>
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="mb-4 text-3xl font-extrabold text-primary-foreground md:text-4xl">
@@ -595,7 +595,7 @@ function ContactForm({
 // ── Contact Info component ────────────────────────────────────────────────────
 function ContactInfo() {
   return (
-    <div className="rounded-3xl bg-background p-8 shadow-sm">
+    <div className="rounded-3xl bg-background p-4 shadow-sm md:p-8">
       <div className="space-y-8">
         {/* Teléfono */}
         <div className="flex items-start gap-4">
