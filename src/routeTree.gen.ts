@@ -14,6 +14,7 @@ import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
 import { Route as PropiedadesIndexRouteImport } from './routes/propiedades.index'
+import { Route as PropiedadesPropertyIdRouteImport } from './routes/propiedades.$propertyId'
 import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/prestamos.consolidacion-de-deudas'
 
@@ -42,6 +43,11 @@ const PropiedadesIndexRoute = PropiedadesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PropiedadesRoute,
 } as any)
+const PropiedadesPropertyIdRoute = PropiedadesPropertyIdRouteImport.update({
+  id: '/$propertyId',
+  path: '/$propertyId',
+  getParentRoute: () => PropiedadesRoute,
+} as any)
 const PrestamosPrestamoPersonalRoute =
   PrestamosPrestamoPersonalRouteImport.update({
     id: '/prestamo-personal',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/calcular-credito': typeof CalcularCreditoRoute
   '/propiedades': typeof PropiedadesRouteWithChildren
   '/propiedades/': typeof PropiedadesIndexRoute
+  '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
   '/propiedades': typeof PropiedadesIndexRoute
+  '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/calcular-credito': typeof CalcularCreditoRoute
   '/propiedades': typeof PropiedadesRouteWithChildren
   '/propiedades/': typeof PropiedadesIndexRoute
+  '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/calcular-credito'
     | '/propiedades'
     | '/propiedades/'
+    | '/propiedades/$propertyId'
     | '/prestamos'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/'
     | '/calcular-credito'
     | '/propiedades'
+    | '/propiedades/$propertyId'
     | '/prestamos'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/calcular-credito'
     | '/propiedades'
     | '/propiedades/'
+    | '/propiedades/$propertyId'
     | '/prestamos'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -155,6 +167,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropiedadesIndexRouteImport
       parentRoute: typeof PropiedadesRoute
     }
+    '/propiedades/$propertyId': {
+      id: '/propiedades/$propertyId'
+      path: '/$propertyId'
+      fullPath: '/propiedades/$propertyId'
+      preLoaderRoute: typeof PropiedadesPropertyIdRouteImport
+      parentRoute: typeof PropiedadesRoute
+    }
     '/prestamos/prestamo-personal': {
       id: '/prestamos/prestamo-personal'
       path: '/prestamo-personal'
@@ -188,10 +207,12 @@ const PrestamosRouteWithChildren = PrestamosRoute._addFileChildren(
 
 interface PropiedadesRouteChildren {
   PropiedadesIndexRoute: typeof PropiedadesIndexRoute
+  PropiedadesPropertyIdRoute: typeof PropiedadesPropertyIdRoute
 }
 
 const PropiedadesRouteChildren: PropiedadesRouteChildren = {
   PropiedadesIndexRoute: PropiedadesIndexRoute,
+  PropiedadesPropertyIdRoute: PropiedadesPropertyIdRoute,
 }
 
 const PropiedadesRouteWithChildren = PropiedadesRoute._addFileChildren(
