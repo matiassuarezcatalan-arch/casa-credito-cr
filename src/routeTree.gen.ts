@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
+import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
+import { Route as PropiedadesIndexRouteImport } from './routes/propiedades.index'
 import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/prestamos.consolidacion-de-deudas'
 
 const PrestamosRoute = PrestamosRouteImport.update({
   id: '/prestamos',
   path: '/prestamos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropiedadesRoute = PropiedadesRouteImport.update({
+  id: '/propiedades',
+  path: '/propiedades',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +36,11 @@ const CalcularCreditoRoute = CalcularCreditoRouteImport.update({
   id: '/calcular-credito',
   path: '/calcular-credito',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PropiedadesIndexRoute = PropiedadesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PropiedadesRoute,
 } as any)
 const PrestamosPrestamoPersonalRoute =
   PrestamosPrestamoPersonalRouteImport.update({
@@ -46,6 +58,8 @@ const PrestamosConsolidacionDeDeudasRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/propiedades': typeof PropiedadesRouteWithChildren
+  '/propiedades/': typeof PropiedadesIndexRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -53,6 +67,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/propiedades': typeof PropiedadesIndexRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -61,6 +76,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/propiedades': typeof PropiedadesRouteWithChildren
+  '/propiedades/': typeof PropiedadesIndexRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -70,6 +87,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/calcular-credito'
+    | '/propiedades'
+    | '/propiedades/'
     | '/prestamos'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -77,6 +96,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/calcular-credito'
+    | '/propiedades'
     | '/prestamos'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -84,6 +104,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/calcular-credito'
+    | '/propiedades'
+    | '/propiedades/'
     | '/prestamos'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -92,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CalcularCreditoRoute: typeof CalcularCreditoRoute
+  PropiedadesRoute: typeof PropiedadesRouteWithChildren
   PrestamosRoute: typeof PrestamosRouteWithChildren
 }
 
@@ -102,6 +125,13 @@ declare module '@tanstack/react-router' {
       path: '/prestamos'
       fullPath: '/prestamos'
       preLoaderRoute: typeof PrestamosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/propiedades': {
+      id: '/propiedades'
+      path: '/propiedades'
+      fullPath: '/propiedades'
+      preLoaderRoute: typeof PropiedadesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -117,6 +147,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/calcular-credito'
       preLoaderRoute: typeof CalcularCreditoRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/propiedades/': {
+      id: '/propiedades/'
+      path: '/'
+      fullPath: '/propiedades/'
+      preLoaderRoute: typeof PropiedadesIndexRouteImport
+      parentRoute: typeof PropiedadesRoute
     }
     '/prestamos/prestamo-personal': {
       id: '/prestamos/prestamo-personal'
@@ -149,9 +186,22 @@ const PrestamosRouteWithChildren = PrestamosRoute._addFileChildren(
   PrestamosRouteChildren,
 )
 
+interface PropiedadesRouteChildren {
+  PropiedadesIndexRoute: typeof PropiedadesIndexRoute
+}
+
+const PropiedadesRouteChildren: PropiedadesRouteChildren = {
+  PropiedadesIndexRoute: PropiedadesIndexRoute,
+}
+
+const PropiedadesRouteWithChildren = PropiedadesRoute._addFileChildren(
+  PropiedadesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CalcularCreditoRoute: CalcularCreditoRoute,
+  PropiedadesRoute: PropiedadesRouteWithChildren,
   PrestamosRoute: PrestamosRouteWithChildren,
 }
 export const routeTree = rootRouteImport

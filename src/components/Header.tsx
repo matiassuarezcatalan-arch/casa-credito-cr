@@ -16,7 +16,7 @@ export default function Header() {
     { label: "Beneficios", href: "#beneficios" },
     { label: "Préstamos", href: "#prestamos" },
     { label: "Nosotros", href: "#nosotros" },
-    { label: "Propiedades", href: "#propiedades" },
+    { label: "Propiedades", href: "/propiedades" },
   ];
 
   return (

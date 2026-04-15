@@ -32,9 +32,9 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 text-lg font-bold text-foreground">Otrás Páginas</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
+            <li><a href="/propiedades" className="hover:text-foreground">Propiedades</a></li>
+            <li><a href="/calcular-credito" className="hover:text-foreground">Calculadora</a></li>
             <li><a href="#" className="hover:text-foreground">Privacy policy</a></li>
-            <li><a href="#" className="hover:text-foreground">Terms & conditions</a></li>
-            <li><a href="#" className="hover:text-foreground">404</a></li>
           </ul>
         </div>
       </div>
