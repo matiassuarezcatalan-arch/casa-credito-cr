@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, DollarSign, TrendingDown, BarChart3, X, ChevronLeft, ChevronRight } from "lucide-react";
+import consolidacionHeroImg from "@/assets/consolidacion-hero.jpg";
+import consolidacionStepsImg from "@/assets/consolidacion-steps.jpg";
+import consolidacionHowworksImg from "@/assets/consolidacion-howworks.jpg";
+import consolidacionTestimonialImg from "@/assets/consolidacion-testimonial.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnacoLogo } from "@/components/AnacoBanner";
@@ -63,7 +67,7 @@ function HeroSection() {
 
         {/* Right: image placeholder + floating badge */}
         <div className="relative">
-          <div className="h-[420px] w-full rounded-3xl bg-muted md:h-[480px]" />
+          <img src={consolidacionHeroImg} alt="Mujer costarricense aliviada organizando sus finanzas tras consolidar deudas" className="w-full rounded-3xl object-cover" width={800} height={480} />
           <div className="absolute right-4 top-4 rounded-2xl bg-background/90 px-5 py-3 shadow-lg backdrop-blur-sm">
             <p className="text-2xl font-extrabold text-primary">+1200</p>
             <p className="text-xs text-muted-foreground">Clientes Satisfechos</p>
@@ -114,7 +118,7 @@ function HowToGetSection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Left: image placeholder */}
-        <div className="h-[420px] w-full rounded-3xl bg-muted md:h-[500px]" />
+        <img src={consolidacionStepsImg} alt="Pareja revisando documentos financieros juntos en su hogar" className="w-full rounded-3xl object-cover" width={800} height={480} loading="lazy" />
 
         {/* Right: steps */}
         <div>
@@ -291,7 +295,7 @@ function HowItWorksSection() {
     <section id="como-funciona" className="bg-background px-6 py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Left: image placeholder */}
-        <div className="h-[420px] w-full rounded-3xl bg-muted md:h-[500px]" />
+        <img src={consolidacionHowworksImg} alt="Vista aérea de vecindario residencial en Costa Rica con casas modernas" className="w-full rounded-3xl object-cover" width={800} height={480} loading="lazy" />
 
         {/* Right: text */}
         <div>
@@ -379,7 +383,7 @@ function CaseStudiesSection() {
             </div>
 
             {/* Right: image placeholder */}
-            <div className="h-64 w-full rounded-2xl bg-muted md:h-72" />
+            <img src={consolidacionTestimonialImg} alt="Familia costarricense celebrando su libertad financiera en casa" className="w-full rounded-2xl object-cover" width={800} height={480} loading="lazy" />
           </div>
         </div>
 
