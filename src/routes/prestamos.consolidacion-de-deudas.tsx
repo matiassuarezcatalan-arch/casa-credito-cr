@@ -66,7 +66,7 @@ function HeroSection() {
         </div>
 
         {/* Right: image placeholder + floating badge */}
-        <div className="relative">
+        <div className="relative hidden md:block">
           <img src={consolidacionHeroImg} alt="Mujer costarricense aliviada organizando sus finanzas tras consolidar deudas" className="w-full rounded-3xl object-cover" width={800} height={480} />
           <div className="absolute right-4 top-4 rounded-2xl bg-background/90 px-5 py-3 shadow-lg backdrop-blur-sm">
             <p className="text-2xl font-extrabold text-primary">+1200</p>
