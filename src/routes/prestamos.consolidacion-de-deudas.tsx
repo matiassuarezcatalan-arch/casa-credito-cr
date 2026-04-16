@@ -564,7 +564,7 @@ function AllLoanTypesSection() {
     {
       name: "Remodelación de Inmueble",
       desc: "Renová tu hogar con el valor de tu propiedad.",
-      href: "#",
+      href: "/prestamos/remodelacion-de-inmueble",
       active: false,
     },
   ];

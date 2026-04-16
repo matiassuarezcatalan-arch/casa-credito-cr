@@ -356,7 +356,7 @@ function AllLoanTypesSection() {
     { name: "Consolidación de Deudas", desc: "Unificá tus deudas en un solo préstamo con mejor tasa.", href: "#", active: false },
     { name: "Préstamo Personal", desc: "Financiamiento flexible sin restricciones de uso.", href: "/prestamos/prestamo-personal", active: true },
     { name: "Capital de Inversión", desc: "Usá tu propiedad para acceder a capital de inversión.", href: "/prestamos/capital-de-inversion", active: false },
-    { name: "Remodelación de Inmueble", desc: "Renová tu hogar con el valor de tu propiedad.", href: "#", active: false },
+    { name: "Remodelación de Inmueble", desc: "Renová tu hogar con el valor de tu propiedad.", href: "/prestamos/remodelacion-de-inmueble", active: false },
   ];
   return (
     <section className="bg-background px-6 py-20">

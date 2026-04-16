@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, X, ChevronLeft, ChevronRight, Rocket, Building2, Package } from "lucide-react";
+import { Check, X, ChevronLeft, ChevronRight, UtensilsCrossed, Layers, Waves } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnacoLogo } from "@/components/AnacoBanner";
@@ -12,21 +12,21 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export const Route = createFileRoute("/prestamos/capital-de-inversion")({
+export const Route = createFileRoute("/prestamos/remodelacion-de-inmueble")({
   head: () => ({
     meta: [
-      { title: "Préstamo Capital de Inversión hasta ₡25M | ANACO Costa Rica" },
-      { name: "description", content: "Accedé hasta ₡25.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años, sin restricciones de uso. Aplicá con ANACO." },
-      { property: "og:title", content: "Préstamo Capital de Inversión hasta ₡25M | ANACO Costa Rica" },
-      { property: "og:description", content: "Accedé hasta ₡25.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años, sin restricciones de uso. Aplicá con ANACO." },
+      { title: "Préstamo para Remodelación de Inmueble hasta ₡5M | ANACO Costa Rica" },
+      { name: "description", content: "Financiá la remodelación de tu hogar hasta ₡5.000.000 usando el valor de tu propiedad. Tasa fija 2.25% mensual, cuota estable, plazos hasta 10 años. Aplicá con ANACO." },
+      { property: "og:title", content: "Préstamo para Remodelación de Inmueble hasta ₡5M | ANACO Costa Rica" },
+      { property: "og:description", content: "Financiá la remodelación de tu hogar hasta ₡5.000.000 usando el valor de tu propiedad. Tasa fija 2.25% mensual, cuota estable, plazos hasta 10 años. Aplicá con ANACO." },
       { property: "og:type", content: "website" },
       {
         name: "script:ld+json",
         content: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FinancialProduct",
-          name: "Préstamo Capital de Inversión ANACO",
-          description: "Accedé hasta ₡25.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años.",
+          name: "Préstamo para Remodelación de Inmueble ANACO",
+          description: "Financiá la remodelación de tu hogar hasta ₡5.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años.",
           provider: {
             "@type": "Organization",
             name: "Inversiones ANACO",
@@ -38,16 +38,16 @@ export const Route = createFileRoute("/prestamos/capital-de-inversion")({
       },
     ],
   }),
-  component: CapitalDeInversionPage,
+  component: RemodelacionDeInmueblePage,
 });
 
 /* ─── SECTION 1: HERO ─── */
 function HeroSection() {
   const bullets = [
-    "Hasta el 60% del valor de tu propiedad",
-    "Mantenés el 100% de tu propiedad",
-    "Cancelación anticipada sin penalidad después de 1 año",
-    "Flexibilidad total en el uso del capital",
+    "Aumentá el valor de tu propiedad",
+    "Cuota y tasa fija durante todo el plazo",
+    "Hasta el 60% del valor del inmueble",
+    "Proyectos desde cocinas hasta piscinas y áreas sociales",
   ];
 
   return (
@@ -56,10 +56,10 @@ function HeroSection() {
         {/* Left: text */}
         <div>
           <h1 className="mb-4 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
-            Préstamo Capital de Inversión hasta ₡25.000.000
+            Préstamo para Remodelación de Inmueble hasta ₡5.000.000
           </h1>
           <p className="mb-8 text-lg text-muted-foreground">
-            Usá el valor de tu propiedad para financiar tu negocio o inversión — sin vender ni perder tu inmueble.
+            Financiá las mejoras de tu hogar usando el valor de tu misma propiedad — sin tocar tus ahorros.
           </p>
           <a
             href="/calculadora"
@@ -135,7 +135,7 @@ function HowToGetSection() {
         {/* Right: steps */}
         <div>
           <h2 className="mb-10 text-3xl font-extrabold text-foreground">
-            ¿Cómo Obtener tu Préstamo Capital de Inversión?
+            ¿Cómo Obtener tu Préstamo para Remodelación?
           </h2>
           <div className="relative space-y-10 pl-10">
             {/* Vertical connector line */}
@@ -173,10 +173,10 @@ function WhatIsSection() {
           <AnacoLogo className="absolute bottom-8 left-8 h-16 w-16 opacity-5" />
 
           <h2 className="mb-6 text-center text-3xl font-extrabold text-foreground">
-            ¿Qué es un Préstamo Capital de Inversión?
+            ¿Qué es un Préstamo para Remodelación de Inmueble?
           </h2>
           <p className="text-center text-sm leading-relaxed text-muted-foreground md:text-base">
-            Un préstamo de capital de inversión te permite apalancar la plusvalía de tu propiedad para acceder a capital líquido sin tener que vender tu inmueble. En ANACO financiamos hasta el 60% del valor comercial de tu propiedad, entregándote los fondos necesarios para iniciar un negocio, comprar inventario, invertir en propiedades de alquiler o aprovechar cualquier oportunidad financiera — mientras mantenés el 100% de la propiedad a tu nombre. Este tipo de préstamo es ideal para emprendedores, inversionistas y propietarios que ven en su inmueble una herramienta financiera estratégica, no solo un lugar para vivir. Con tasa fija del 2.25% mensual y plazos hasta 10 años, convertís el valor dormido de tu propiedad en capital productivo.
+            Un préstamo para remodelación de inmueble te permite financiar mejoras en tu hogar usando tu propia propiedad como garantía. Ya sea que estés construyendo una segunda planta, renovando tu cocina, modernizando baños o agregando una piscina, en ANACO financiamos hasta el 60% del valor de tu propiedad a una tasa fija del 2.25% mensual. Tu cuota mensual nunca cambia durante todo el plazo del préstamo, lo que te permite presupuestar con tranquilidad de principio a fin del proyecto. Este tipo de financiamiento es ideal para propietarios que quieren aumentar el valor de su inmueble sin tocar sus ahorros ni usar tarjetas de crédito con tasas altas, convirtiendo una mejora en una inversión que se recupera con la valorización del inmueble.
           </p>
         </div>
       </div>
@@ -188,19 +188,19 @@ function WhatIsSection() {
 function UseCasesSection() {
   const cases = [
     {
-      icon: Rocket,
-      title: "Emprendimiento",
-      desc: "Usá el capital de tu propiedad para iniciar o escalar tu negocio sin necesidad de socios externos ni ceder parte de tu empresa.",
+      icon: UtensilsCrossed,
+      title: "Cocinas y Baños",
+      desc: "Modernizá los espacios más usados de tu hogar con acabados de calidad y aumentá su valor de mercado de inmediato.",
     },
     {
-      icon: Building2,
-      title: "Inversión en Propiedades",
-      desc: "Comprá una segunda propiedad para alquiler usando el equity de tu inmueble actual como palanca financiera y generá ingresos pasivos.",
+      icon: Layers,
+      title: "Ampliaciones y Segunda Planta",
+      desc: "Creá espacio adicional para tu familia o para generar ingresos por alquiler construyendo hacia arriba.",
     },
     {
-      icon: Package,
-      title: "Compra de Inventario o Equipo",
-      desc: "Accedé a capital inmediato para comprar equipos, maquinaria o inventario que impulse la capacidad productiva de tu empresa.",
+      icon: Waves,
+      title: "Piscinas y Áreas Sociales",
+      desc: "Transformá tu propiedad en el lugar de reunión familiar que siempre soñaste y elevá significativamente su plusvalía.",
     },
   ];
 
@@ -208,7 +208,7 @@ function UseCasesSection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="mb-12 text-3xl font-extrabold text-foreground md:text-4xl">
-          Usos del Préstamo Capital de Inversión
+          Usos del Préstamo para Remodelación
         </h2>
         <div className="mb-10 grid gap-8 sm:grid-cols-3">
           {cases.map((c) => (
@@ -241,9 +241,8 @@ function UseCasesSection() {
 }
 
 /* ─── SECTION 5: WHY CHOOSE ANACO ─── */
-// Reuses the shared WhyChooseSection component with a capital-de-inversion-specific heading.
-// className="bg-background" overrides the component's default bg to keep the
-// white/grey alternating pattern correct on this page.
+// Reuses the shared WhyChooseSection component with a remodelacion-specific heading.
+// className="bg-background" keeps the white/grey alternating pattern correct.
 
 /* ─── SECTION 6: COMPARE ─── */
 function CompareSection() {
@@ -312,13 +311,13 @@ function HowItWorksSection() {
         {/* Right: text */}
         <div>
           <h2 className="mb-6 text-3xl font-extrabold text-foreground">
-            ¿Cómo Funciona un Préstamo Capital de Inversión en Costa Rica?
+            ¿Cómo Funciona un Préstamo para Remodelación de Inmueble en Costa Rica?
           </h2>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            En Costa Rica, los préstamos de capital de inversión permiten a los propietarios apalancar la plusvalía de su inmueble sin tener que venderlo. ANACO evalúa el valor comercial actual de tu propiedad y financia hasta el 60% de ese valor, sin importar tu tipo de empleo ni tu historial crediticio tradicional.
+            En Costa Rica, el financiamiento para remodelación a través de prestamistas privados como ANACO es más ágil y flexible que los procesos bancarios tradicionales. Al usar tu propiedad como garantía, podés acceder hasta al 60% de su valor para financiar mejoras — desde pequeñas modernizaciones hasta ampliaciones completas.
           </p>
           <p className="mb-8 text-sm leading-relaxed text-muted-foreground md:text-base">
-            Los fondos pueden usarse libremente — para negocios, inversiones u oportunidades financieras — sin necesidad de justificar el uso del capital. El proceso incluye un avalúo de la propiedad, revisión de documentación y firma en notaría, después de lo cual los fondos se transfieren directamente a tu cuenta.
+            La tasa fija del 2.25% mensual y la cuota que nunca cambia hacen que presupuestar tu proyecto sea predecible de inicio a fin. El proceso incluye avalúo, revisión de documentación y firma en notaría, con los fondos desembolsados directamente a tu cuenta bancaria para que los administrés según avance tu obra.
           </p>
           <a
             href="/calculadora"
@@ -336,19 +335,19 @@ function HowItWorksSection() {
 function CaseStudiesSection() {
   const stories = [
     {
-      name: "Carlos Méndez",
-      role: "Emprendedor",
-      text: "Carlos usó el equity de su casa para lanzar una pequeña empresa de alimentos. Cubrió equipos, permisos y el primer inventario con el préstamo de ANACO. Su negocio estuvo operativo en 60 días y ya genera ingresos suficientes para cubrir la cuota mensual con comodidad.",
+      name: "Beatriz y Rafael Calderón",
+      role: "Matrimonio Pensionado",
+      text: "Beatriz y Rafael siempre soñaron con una piscina y área social para disfrutar con sus nietos. Con ANACO financiaron la construcción usando el valor acumulado en su hogar. Al finalizar la obra, la propiedad fue avaluada con un incremento del 20% en su valor. Hoy la disfrutan a diario.",
     },
     {
-      name: "Sofía Jiménez",
-      role: "Inversionista",
-      text: "Sofía usó el capital de su vivienda principal para comprar un apartamento pequeño en alquiler. Hoy los ingresos por alquiler cubren la mayor parte de su cuota con ANACO, convirtiendo su propiedad en una fuente de flujo de caja pasivo.",
+      name: "Familia Rojas",
+      role: "Familia Costarricense",
+      text: "La familia Rojas necesitaba más espacio pero no quería mudarse. Agregaron una segunda planta con dos habitaciones adicionales usando un préstamo ANACO. Hoy alquilan uno de los cuartos y ese ingreso cubre el 80% de la cuota mensual del préstamo — el proyecto prácticamente se paga solo.",
     },
     {
-      name: "Empresa Familiar Torres",
-      role: "Negocio Familiar",
-      text: "La familia Torres usó el capital de su propiedad para comprar equipo comercial que duplicó su capacidad de producción. Gracias al incremento de ingresos lograron cancelar el préstamo en tan solo 3 años.",
+      name: "Patricia Ulate",
+      role: "Profesional",
+      text: "Patricia remodeló su cocina abierta y ambos baños con acabados modernos. Además de la comodidad diaria, su casa fue avaluada ₡15 millones por encima del valor previo a la remodelación. La mejora no fue un gasto — fue una inversión que se recuperó con creces.",
     },
   ];
 
@@ -361,7 +360,7 @@ function CaseStudiesSection() {
     <section className="bg-lavender px-6 py-20">
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="mb-6 text-3xl font-extrabold text-foreground">
-          Casos Reales de Capital de Inversión con ANACO
+          Casos Reales de Remodelación con ANACO
         </h2>
 
         {/* Prev / Next controls */}
@@ -453,13 +452,13 @@ function HomeEquitySection() {
             Préstamos Hipotecarios con ANACO: Tu Propiedad es tu Mayor Activo
           </h2>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            Conseguir un préstamo de capital de inversión puede ser un proceso simple, pero las instituciones financieras tradicionales tienen exigencias altas, incluso para quienes tienen un historial sólido. Si sos propietario, podés usar el valor de tu inmueble como garantía con ANACO.
+            Conseguir un préstamo para remodelación puede ser un proceso simple, pero las instituciones financieras tradicionales tienen exigencias altas, incluso para quienes buscan mejorar su propio hogar. Si sos propietario, podés usar el valor de tu inmueble como garantía con ANACO.
           </p>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            ANACO ayuda a los costarricenses a acceder al valor acumulado en sus propiedades para usarlo con cualquier propósito — incluyendo capital de inversión para negocios o proyectos. Muchos solicitantes eligen un préstamo hipotecario sobre productos bancarios tradicionales porque es más flexible y accesible.
+            ANACO ayuda a los costarricenses a acceder al valor acumulado en sus propiedades para usarlo con cualquier propósito — incluyendo remodelaciones y mejoras del hogar. Muchos solicitantes eligen un préstamo hipotecario sobre créditos personales tradicionales porque es más flexible y las tasas son significativamente menores.
           </p>
           <p className="mb-8 text-sm leading-relaxed text-muted-foreground md:text-base">
-            Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayas vivido en tu hogar, más capital tenés. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad.
+            Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayas vivido en tu hogar, más capital tenés. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad para financiar tu remodelación completa.
           </p>
           <a
             href="/calculadora"
@@ -477,31 +476,31 @@ function HomeEquitySection() {
 function GlossarySection() {
   const leftTerms = [
     {
-      term: "Capital de trabajo",
-      def: "Fondos disponibles que una empresa utiliza para cubrir sus operaciones diarias — como compra de insumos, pago de planilla y gastos operativos. El préstamo capital de inversión de ANACO puede destinarse directamente a este fin.",
+      term: "Remodelación financiada",
+      def: "Proceso de mejorar o ampliar un inmueble usando un préstamo con garantía hipotecaria en lugar de ahorros propios o tarjetas de crédito, permitiendo realizar proyectos de mayor envergadura con cuotas fijas manejables.",
     },
     {
-      term: "Valor de mercado de la propiedad",
-      def: "Precio estimado al que un inmueble puede venderse en el mercado actual, determinado mediante un avalúo profesional. Este valor es la base para calcular el monto máximo de tu préstamo con ANACO.",
+      term: "Valorización de inmueble",
+      def: "Incremento en el valor comercial de una propiedad como resultado de mejoras físicas, cambios en el mercado o desarrollo del entorno. Las remodelaciones bien ejecutadas suelen generar valorizaciones que superan el costo de la inversión.",
     },
     {
-      term: "Equity o plusvalía",
-      def: "Diferencia entre el valor comercial de tu propiedad y el saldo pendiente de cualquier hipoteca activa. Representa el capital acumulado que podés convertir en liquidez sin vender el inmueble.",
+      term: "Garantía hipotecaria",
+      def: "Propiedad inmueble que respalda el préstamo, permitiendo acceder a mejores tasas, plazos más amplios y montos más altos que los créditos sin garantía. La propiedad permanece a tu nombre durante todo el plazo.",
     },
   ];
 
   const rightTerms = [
     {
-      term: "Apalancamiento financiero",
-      def: "Estrategia de usar deuda o activos existentes para amplificar el potencial de retorno de una inversión. Con ANACO, tu propiedad se convierte en palanca para acceder a capital productivo.",
+      term: "Cuota fija",
+      def: "Monto mensual predeterminado que no cambia durante todo el plazo del crédito, independientemente de fluctuaciones del mercado. Te permite planificar tu presupuesto con total certeza durante el proyecto de remodelación.",
     },
     {
-      term: "Cancelación anticipada",
-      def: "Posibilidad de pagar la totalidad del saldo del préstamo antes del vencimiento del plazo. ANACO permite cancelar anticipadamente sin penalidad una vez transcurrido el primer año.",
+      term: "Plusvalía",
+      def: "Valor adicional que gana una propiedad a lo largo del tiempo, ya sea por mejoras realizadas, por el desarrollo del entorno o por el aumento general del mercado inmobiliario. Las remodelaciones estratégicas aceleran este proceso.",
     },
     {
-      term: "Abono extraordinario",
-      def: "Pago adicional al monto de cuota pactado, que se aplica directamente al capital del préstamo. Reducís el saldo más rápido y pagás menos intereses en total. Sin penalidad después del primer año con ANACO.",
+      term: "Plazo del crédito",
+      def: "Período de tiempo acordado para devolver el préstamo, expresado en meses o años. Con ANACO podés elegir plazos de hasta 10 años, ajustando la cuota mensual a tu capacidad de pago actual.",
     },
   ];
 
@@ -511,7 +510,7 @@ function GlossarySection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="mb-10 text-3xl font-extrabold text-foreground">
-          Términos Relacionados con Capital de Inversión
+          Términos Relacionados con Remodelación de Inmueble
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -572,13 +571,13 @@ function AllLoanTypesSection() {
       name: "Capital de Inversión",
       desc: "Usá tu propiedad para acceder a capital de inversión.",
       href: "/prestamos/capital-de-inversion",
-      active: true,
+      active: false,
     },
     {
       name: "Remodelación de Inmueble",
       desc: "Renová tu hogar con el valor de tu propiedad.",
       href: "/prestamos/remodelacion-de-inmueble",
-      active: false,
+      active: true,
     },
   ];
 
@@ -614,24 +613,24 @@ function AllLoanTypesSection() {
 function FAQSection() {
   const faqs = [
     {
-      q: "¿Cuánto capital puedo obtener con mi propiedad?",
-      a: "Podés obtener hasta el 60% del valor comercial de tu propiedad, con montos desde ₡1 millón hasta ₡25 millones. El monto exacto depende del avalúo de tu inmueble y tu capacidad de pago.",
+      q: "¿Qué tipos de remodelaciones financia ANACO?",
+      a: "ANACO financia cualquier tipo de mejora: cocinas, baños, ampliaciones, segundas plantas, piscinas, áreas sociales, fachadas, jardines y más. No imponemos restricciones sobre el tipo de proyecto — lo importante es que uses tu propiedad como garantía.",
     },
     {
-      q: "¿Pierdo la propiedad si la uso como garantía?",
-      a: "No. La propiedad queda registrada como garantía hipotecaria durante el plazo del préstamo, pero permanece 100% a tu nombre. Solo en caso de incumplimiento prolongado se activaría el proceso de garantía, al igual que con cualquier crédito hipotecario.",
+      q: "¿Cuánto puedo obtener para remodelar mi hogar?",
+      a: "Podés obtener hasta el 60% del valor comercial de tu propiedad, con montos de hasta ₡5.000.000. El monto exacto depende del avalúo de tu inmueble y tu capacidad de pago mensual.",
     },
     {
-      q: "¿Puedo usar el capital para cualquier tipo de inversión?",
-      a: "Sí. ANACO no impone restricciones sobre el uso del capital. Podés destinarlo a iniciar un negocio, comprar equipo, invertir en otra propiedad, comprar inventario o cualquier oportunidad financiera que identifiqués.",
+      q: "¿Necesito presupuesto de obra para aplicar?",
+      a: "No es un requisito obligatorio para iniciar el proceso. Podés comenzar con nuestra calculadora para tener una idea del monto disponible. Nuestro equipo te orientará sobre la documentación específica que necesitás en tu caso.",
     },
     {
-      q: "¿Qué documentos necesito para aplicar?",
-      a: "Generalmente se requiere cédula de identidad, escritura de la propiedad, recibos de servicios públicos y comprobantes de ingresos. Nuestro equipo te guía en el proceso desde el primer contacto para que la documentación sea lo más sencilla posible.",
+      q: "¿La remodelación realmente aumenta el valor de mi propiedad?",
+      a: "Sí, en la mayoría de los casos. Proyectos como cocinas modernas, baños renovados, ampliaciones o piscinas generan incrementos en el valor comercial que frecuentemente superan el costo invertido. Tu inmueble se valoriza y tu patrimonio crece.",
     },
     {
-      q: "¿Puedo tener más de un préstamo al mismo tiempo?",
-      a: "Sí, es posible tener más de un préstamo activo con ANACO según tu capacidad de pago y el valor disponible de tu propiedad. Cada caso se evalúa de forma personalizada para asegurarnos de que las cuotas sean manejables para vos.",
+      q: "¿Puedo usar el préstamo para una propiedad de alquiler?",
+      a: "Sí. El préstamo puede usarse para remodelar una propiedad de alquiler siempre que esa propiedad sea la garantía hipotecaria. Muchos clientes usan este esquema para mejorar sus propiedades de renta y cobrar alquileres más altos.",
     },
   ];
 
@@ -639,7 +638,7 @@ function FAQSection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-10 text-center text-3xl font-extrabold text-foreground">
-          Preguntas Frecuentes sobre Capital de Inversión
+          Preguntas Frecuentes sobre Remodelación de Inmueble
         </h2>
         <Accordion type="single" collapsible className="flex flex-col gap-4">
           {faqs.map((f, i) => (
@@ -689,7 +688,7 @@ function TrustBanner() {
 }
 
 /* ─── PAGE ─── */
-function CapitalDeInversionPage() {
+function RemodelacionDeInmueblePage() {
   return (
     <>
       <Header />
@@ -699,7 +698,7 @@ function CapitalDeInversionPage() {
         <WhatIsSection />
         <UseCasesSection />
         <WhyChooseSection
-          headingSuffix="tu Préstamo Capital de Inversión?"
+          headingSuffix="tu Préstamo de Remodelación?"
           subtext="Más de 40 años siendo la solución a los problemas financieros de los costarricenses."
           className="bg-background"
         />
