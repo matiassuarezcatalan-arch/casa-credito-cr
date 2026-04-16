@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, X, ChevronLeft, ChevronRight, Rocket, Building2, Package } from "lucide-react";
+import capitalHeroImg from "@/assets/capital-hero.jpg";
+import capitalStepsImg from "@/assets/capital-steps.jpg";
+import capitalHowworksImg from "@/assets/capital-howworks.jpg";
+import capitalTestimonialImg from "@/assets/capital-testimonial.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnacoLogo } from "@/components/AnacoBanner";
@@ -79,7 +83,7 @@ function HeroSection() {
 
         {/* Right: image placeholder + floating badge */}
         <div className="relative">
-          <div className="h-[420px] w-full rounded-3xl bg-muted md:h-[480px]" />
+          <img src={capitalHeroImg} alt="Emprendedor costarricense frente a su negocio exitoso" className="w-full rounded-3xl object-cover" width={800} height={480} />
           <div className="absolute right-4 top-4 rounded-2xl bg-background/90 px-5 py-3 shadow-lg backdrop-blur-sm">
             <p className="text-2xl font-extrabold text-primary">+1200</p>
             <p className="text-xs text-muted-foreground">Clientes Satisfechos</p>
@@ -130,7 +134,7 @@ function HowToGetSection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Left: image placeholder */}
-        <div className="h-[420px] w-full rounded-3xl bg-muted md:h-[500px]" />
+        <img src={capitalStepsImg} alt="Reunión profesional entre empresario y asesor financiero en oficina moderna" className="w-full rounded-3xl object-cover" width={800} height={480} loading="lazy" />
 
         {/* Right: steps */}
         <div>
@@ -307,7 +311,7 @@ function HowItWorksSection() {
     <section id="como-funciona" className="bg-background px-6 py-20">
       <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
         {/* Left: image placeholder */}
-        <div className="h-[420px] w-full rounded-3xl bg-muted md:h-[500px]" />
+        <img src={capitalHowworksImg} alt="Edificio comercial moderno en Costa Rica como inversión inmobiliaria" className="w-full rounded-3xl object-cover" width={800} height={480} loading="lazy" />
 
         {/* Right: text */}
         <div>
@@ -395,7 +399,7 @@ function CaseStudiesSection() {
             </div>
 
             {/* Right: image placeholder */}
-            <div className="h-64 w-full rounded-2xl bg-muted md:h-72" />
+            <img src={capitalTestimonialImg} alt="Emprendedora costarricense orgullosa en su negocio exitoso" className="w-full rounded-2xl object-cover" width={800} height={480} loading="lazy" />
           </div>
         </div>
 
