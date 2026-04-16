@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, DollarSign, TrendingDown, BarChart3, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, X, ChevronLeft, ChevronRight, Rocket, Building2, Package } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnacoLogo } from "@/components/AnacoBanner";
@@ -12,26 +12,42 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export const Route = createFileRoute("/prestamos/consolidacion-de-deudas")({
+export const Route = createFileRoute("/prestamos/capital-de-inversion")({
   head: () => ({
     meta: [
-      { title: "Consolidación de Deudas en Costa Rica hasta ₡25.000.000 | Inversiones ANACO" },
-      { name: "description", content: "Consolidá todas tus deudas en un solo pago mensual con ANACO. Tasa fija del 2.25% mensual, plazos hasta 10 años, aprobación en días. Usá tu propiedad como garantía y ahorrá hasta un 60% en intereses." },
-      { property: "og:title", content: "Consolidación de Deudas en Costa Rica hasta ₡25.000.000 | Inversiones ANACO" },
-      { property: "og:description", content: "Consolidá todas tus deudas en un solo pago mensual con ANACO. Tasa fija del 2.25% mensual, plazos hasta 10 años, aprobación en días. Usá tu propiedad como garantía y ahorrá hasta un 60% en intereses." },
+      { title: "Préstamo Capital de Inversión hasta ₡25M | ANACO Costa Rica" },
+      { name: "description", content: "Accedé hasta ₡25.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años, sin restricciones de uso. Aplicá con ANACO." },
+      { property: "og:title", content: "Préstamo Capital de Inversión hasta ₡25M | ANACO Costa Rica" },
+      { property: "og:description", content: "Accedé hasta ₡25.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años, sin restricciones de uso. Aplicá con ANACO." },
       { property: "og:type", content: "website" },
+      {
+        name: "script:ld+json",
+        content: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialProduct",
+          name: "Préstamo Capital de Inversión ANACO",
+          description: "Accedé hasta ₡25.000.000 usando el valor de tu propiedad como garantía. Tasa fija 2.25% mensual, plazos hasta 10 años.",
+          provider: {
+            "@type": "Organization",
+            name: "Inversiones ANACO",
+            url: "https://www.anacosa.com",
+          },
+          interestRate: "2.25%",
+          feesAndCommissionsSpecification: "Tasa fija mensual sobre saldo",
+        }),
+      },
     ],
   }),
-  component: ConsolidacionDeDeudas,
+  component: CapitalDeInversionPage,
 });
 
 /* ─── SECTION 1: HERO ─── */
 function HeroSection() {
   const bullets = [
-    "Simplificá tus finanzas",
-    "Reducí tus intereses mensuales",
-    "Un solo pago fijo al mes",
-    "Liberá tus tarjetas para emergencias",
+    "Hasta el 60% del valor de tu propiedad",
+    "Mantenés el 100% de tu propiedad",
+    "Cancelación anticipada sin penalidad después de 1 año",
+    "Flexibilidad total en el uso del capital",
   ];
 
   return (
@@ -40,13 +56,13 @@ function HeroSection() {
         {/* Left: text */}
         <div>
           <h1 className="mb-4 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
-            Préstamos de Consolidación de Deudas hasta ₡25.000.000
+            Préstamo Capital de Inversión hasta ₡25.000.000
           </h1>
           <p className="mb-8 text-lg text-muted-foreground">
-            Unificá todas tus deudas en un solo pago mensual con una tasa fija del 2.25% mensual y ahorrá hasta un 60% en intereses.
+            Usá el valor de tu propiedad para financiar tu negocio o inversión — sin vender ni perder tu inmueble.
           </p>
           <a
-            href="/calcular-credito"
+            href="/calculadora"
             className="mb-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -83,7 +99,7 @@ function HowToGetSection() {
       desc: (
         <>
           Ingresá a{" "}
-          <a href="/calcular-credito" className="underline">
+          <a href="/calculadora" className="underline">
             nuestra calculadora
           </a>{" "}
           y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
@@ -92,7 +108,7 @@ function HowToGetSection() {
     },
     {
       n: 2,
-      title: "Te Contáctamos",
+      title: "Te Contactamos",
       desc: (
         <>
           Nos reunimos para revisar tu documentación y confirmar que cumplís con los requisitos. Consultá la{" "}
@@ -106,7 +122,7 @@ function HowToGetSection() {
     {
       n: 3,
       title: "Firmás y Recibís tu Dinero",
-      desc: "Una vez aprobado, coordinamos la firma en notaría y transferimos el dinero directamente a tu cuenta bancaria — así de fácil.",
+      desc: "Una vez aprobado, coordinamos la firma en notaría y transferimos el dinero directamente a tu cuenta bancaria.",
     },
   ];
 
@@ -119,7 +135,7 @@ function HowToGetSection() {
         {/* Right: steps */}
         <div>
           <h2 className="mb-10 text-3xl font-extrabold text-foreground">
-            ¿Cómo Obtener tu Préstamo de Consolidación?
+            ¿Cómo Obtener tu Préstamo Capital de Inversión?
           </h2>
           <div className="relative space-y-10 pl-10">
             {/* Vertical connector line */}
@@ -135,7 +151,7 @@ function HowToGetSection() {
             ))}
           </div>
           <a
-            href="/calcular-credito"
+            href="/calculadora"
             className="mt-10 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -146,7 +162,7 @@ function HowToGetSection() {
   );
 }
 
-/* ─── SECTION 3: WHAT IS DEBT CONSOLIDATION ─── */
+/* ─── SECTION 3: WHAT IS ─── */
 function WhatIsSection() {
   return (
     <section className="bg-background px-6 py-20">
@@ -157,10 +173,10 @@ function WhatIsSection() {
           <AnacoLogo className="absolute bottom-8 left-8 h-16 w-16 opacity-5" />
 
           <h2 className="mb-6 text-center text-3xl font-extrabold text-foreground">
-            ¿Qué es un Préstamo de Consolidación de Deudas?
+            ¿Qué es un Préstamo Capital de Inversión?
           </h2>
           <p className="text-center text-sm leading-relaxed text-muted-foreground md:text-base">
-            Un préstamo de consolidación de deudas te permite combinar múltiples obligaciones con altos intereses — tarjetas de crédito, préstamos personales, saldos pendientes — en un solo crédito con una cuota fija mensual y una tasa más baja. En lugar de manejar varios pagos al 5–6% mensual, pagás una sola cuota fija al 2.25% mensual sobre el saldo pendiente. Esto simplifica tus finanzas, reduce tu costo total en intereses y libera tus tarjetas de crédito para emergencias reales. A diferencia de los bancos tradicionales, ANACO evalúa tu propiedad y tu capacidad real de pago, no solo tu historial crediticio, lo que hace el proceso más accesible y ágil para la mayoría de los costarricenses.
+            Un préstamo de capital de inversión te permite apalancar la plusvalía de tu propiedad para acceder a capital líquido sin tener que vender tu inmueble. En ANACO financiamos hasta el 60% del valor comercial de tu propiedad, entregándote los fondos necesarios para iniciar un negocio, comprar inventario, invertir en propiedades de alquiler o aprovechar cualquier oportunidad financiera — mientras mantenés el 100% de la propiedad a tu nombre. Este tipo de préstamo es ideal para emprendedores, inversionistas y propietarios que ven en su inmueble una herramienta financiera estratégica, no solo un lugar para vivir. Con tasa fija del 2.25% mensual y plazos hasta 10 años, convertís el valor dormido de tu propiedad en capital productivo.
           </p>
         </div>
       </div>
@@ -172,19 +188,19 @@ function WhatIsSection() {
 function UseCasesSection() {
   const cases = [
     {
-      icon: DollarSign,
-      title: "Simplificá tus Finanzas",
-      desc: "En lugar de pagar múltiples tarjetas y préstamos con distintas fechas y tasas, unificás todo en un solo pago mensual predecible y manejable.",
+      icon: Rocket,
+      title: "Emprendimiento",
+      desc: "Usá el capital de tu propiedad para iniciar o escalar tu negocio sin necesidad de socios externos ni ceder parte de tu empresa.",
     },
     {
-      icon: TrendingDown,
-      title: "Reducí tus Intereses",
-      desc: "Los préstamos de consolidación tienen tasas significativamente más bajas que las tarjetas de crédito convencionales. Pasás de pagar 5–6% a solo 2.25% mensual.",
+      icon: Building2,
+      title: "Inversión en Propiedades",
+      desc: "Comprá una segunda propiedad para alquiler usando el equity de tu inmueble actual como palanca financiera y generá ingresos pasivos.",
     },
     {
-      icon: BarChart3,
-      title: "Salí de las Deudas Más Rápido",
-      desc: "Al pagar más sobre el capital que sobre intereses, reducís tu deuda total de manera acelerada y recuperás tu estabilidad financiera.",
+      icon: Package,
+      title: "Compra de Inventario o Equipo",
+      desc: "Accedé a capital inmediato para comprar equipos, maquinaria o inventario que impulse la capacidad productiva de tu empresa.",
     },
   ];
 
@@ -192,7 +208,7 @@ function UseCasesSection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="mb-12 text-3xl font-extrabold text-foreground md:text-4xl">
-          Usos del Préstamo de Consolidación de Deudas
+          Usos del Préstamo Capital de Inversión
         </h2>
         <div className="mb-10 grid gap-8 sm:grid-cols-3">
           {cases.map((c) => (
@@ -207,7 +223,7 @@ function UseCasesSection() {
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="/calcular-credito"
+            href="/calculadora"
             className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -225,15 +241,15 @@ function UseCasesSection() {
 }
 
 /* ─── SECTION 5: WHY CHOOSE ANACO ─── */
-// Reuses the shared WhyChooseSection component with a consolidation-specific heading.
-// className="bg-background" overrides the component's default bg-alt-bg so the
-// white/grey alternating pattern is maintained correctly on this page.
+// Reuses the shared WhyChooseSection component with a capital-de-inversion-specific heading.
+// className="bg-background" overrides the component's default bg to keep the
+// white/grey alternating pattern correct on this page.
 
 /* ─── SECTION 6: COMPARE ─── */
 function CompareSection() {
   const rows = [
     { feature: "Tasa mensual",            bank: "4–6% mensual",                    anaco: "2.25% mensual fija" },
-    { feature: "Plazo máximo",            bank: "Hasta 5 años",                    anaco: "Hasta 10 años" },
+    { feature: "Plazo",                   bank: "Hasta 5 años",                    anaco: "Hasta 10 años" },
     { feature: "Velocidad de aprobación", bank: "Semanas o meses",                 anaco: "Días" },
     { feature: "Requisito principal",     bank: "Historial crediticio extenso",    anaco: "Propiedad como garantía" },
     { feature: "Abonos extraordinarios",  bank: "Con penalidad",                   anaco: "Sin penalidad después de 1 año" },
@@ -248,7 +264,7 @@ function CompareSection() {
           ANACO vs Bancos Tradicionales
         </h2>
         <p className="mb-10 text-muted-foreground">
-          Conocé por qué más costarricenses eligen ANACO para consolidar sus deudas.
+          Conocé por qué más costarricenses eligen ANACO sobre los bancos.
         </p>
         <div className="overflow-x-auto rounded-3xl bg-background shadow-lg">
           <table className="w-full text-left text-sm">
@@ -296,16 +312,16 @@ function HowItWorksSection() {
         {/* Right: text */}
         <div>
           <h2 className="mb-6 text-3xl font-extrabold text-foreground">
-            ¿Cómo Funciona la Consolidación de Deudas en Costa Rica?
+            ¿Cómo Funciona un Préstamo Capital de Inversión en Costa Rica?
           </h2>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            En Costa Rica, los préstamos de consolidación de deudas son ofrecidos por bancos, cooperativas y prestamistas privados. La opción más accesible para propietarios de inmuebles es un préstamo de consolidación con garantía hipotecaria, que utiliza tu propiedad como respaldo para acceder a montos mayores y tasas más bajas que las deudas de consumo tradicionales. ANACO se especializa en este modelo, financiando hasta el 60% del valor de tu propiedad — suficiente para cubrir la mayoría o la totalidad de tus obligaciones pendientes en una sola transacción.
+            En Costa Rica, los préstamos de capital de inversión permiten a los propietarios apalancar la plusvalía de su inmueble sin tener que venderlo. ANACO evalúa el valor comercial actual de tu propiedad y financia hasta el 60% de ese valor, sin importar tu tipo de empleo ni tu historial crediticio tradicional.
           </p>
           <p className="mb-8 text-sm leading-relaxed text-muted-foreground md:text-base">
-            El proceso incluye una tasación de la propiedad, revisión de documentación y firma ante notario, tras lo cual los fondos se transfieren directamente a tu cuenta bancaria. A diferencia de los bancos tradicionales, ANACO evalúa tu capacidad real de pago y el valor de tu inmueble, no solo tu historial crediticio, lo que hace el proceso más rápido y accesible.
+            Los fondos pueden usarse libremente — para negocios, inversiones u oportunidades financieras — sin necesidad de justificar el uso del capital. El proceso incluye un avalúo de la propiedad, revisión de documentación y firma en notaría, después de lo cual los fondos se transfieren directamente a tu cuenta.
           </p>
           <a
-            href="/calcular-credito"
+            href="/calculadora"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -320,19 +336,19 @@ function HowItWorksSection() {
 function CaseStudiesSection() {
   const stories = [
     {
-      name: "Laura Porras",
-      role: "Administradora Contable",
-      text: "Laura tenía 4 tarjetas de crédito con tasas del 5.5% mensual que le consumían gran parte de sus ingresos. Con ANACO consolidó todas sus deudas en un solo pago al 2.25% mensual. Ahora ahorra ₡180,000 al mes en intereses y recuperó su tranquilidad financiera. Un solo pago, una sola fecha, sin estrés.",
+      name: "Carlos Méndez",
+      role: "Emprendedor",
+      text: "Carlos usó el equity de su casa para lanzar una pequeña empresa de alimentos. Cubrió equipos, permisos y el primer inventario con el préstamo de ANACO. Su negocio estuvo operativo en 60 días y ya genera ingresos suficientes para cubrir la cuota mensual con comodidad.",
     },
     {
-      name: "Marco Solís",
-      role: "Comerciante",
-      text: "Marco tenía un préstamo personal, dos tarjetas de crédito y un saldo de crédito comercial. Manejar cuatro pagos diferentes cada mes le complicaba el flujo de caja de su negocio. Con ANACO unificó todo en un solo préstamo con cuota fija y liberó sus tarjetas para las operaciones de su comercio.",
+      name: "Sofía Jiménez",
+      role: "Inversionista",
+      text: "Sofía usó el capital de su vivienda principal para comprar un apartamento pequeño en alquiler. Hoy los ingresos por alquiler cubren la mayor parte de su cuota con ANACO, convirtiendo su propiedad en una fuente de flujo de caja pasivo.",
     },
     {
-      name: "Ana y Jorge Vega",
-      role: "Matrimonio",
-      text: "Ana y Jorge pagaban 6 obligaciones diferentes cada mes, entre tarjetas, préstamos y créditos de almacenes. Consolidaron todo con ANACO, simplificaron a un solo pago fijo, redujeron su desembolso mensual en un 40% y ahora planean estar libres de deuda en 5 años.",
+      name: "Empresa Familiar Torres",
+      role: "Negocio Familiar",
+      text: "La familia Torres usó el capital de su propiedad para comprar equipo comercial que duplicó su capacidad de producción. Gracias al incremento de ingresos lograron cancelar el préstamo en tan solo 3 años.",
     },
   ];
 
@@ -345,7 +361,7 @@ function CaseStudiesSection() {
     <section className="bg-lavender px-6 py-20">
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="mb-6 text-3xl font-extrabold text-foreground">
-          Casos Reales de Consolidación de Deudas con ANACO
+          Casos Reales de Capital de Inversión con ANACO
         </h2>
 
         {/* Prev / Next controls */}
@@ -404,9 +420,9 @@ function CaseStudiesSection() {
 /* ─── SECTION 9: HOME EQUITY ─── */
 function HomeEquitySection() {
   const bars = [
-    { label: "Valor de la propiedad", width: "100%", opacity: "bg-primary" },
-    { label: "Saldo hipotecario",     width: "40%",  opacity: "bg-primary/60" },
-    { label: "Capital disponible",    width: "60%",  opacity: "bg-primary" },
+    { label: "Valor de la propiedad", width: "100%", cls: "bg-primary" },
+    { label: "Saldo hipotecario",     width: "40%",  cls: "bg-primary/60" },
+    { label: "Capital disponible",    width: "60%",  cls: "bg-primary" },
   ];
 
   return (
@@ -424,10 +440,7 @@ function HomeEquitySection() {
               <div key={b.label}>
                 <p className="mb-1 text-xs text-muted-foreground">{b.label}</p>
                 <div className="h-4 w-full rounded-full bg-primary/20">
-                  <div
-                    className={`h-4 rounded-full ${b.opacity}`}
-                    style={{ width: b.width }}
-                  />
+                  <div className={`h-4 rounded-full ${b.cls}`} style={{ width: b.width }} />
                 </div>
               </div>
             ))}
@@ -437,19 +450,19 @@ function HomeEquitySection() {
         {/* Right: text */}
         <div>
           <h2 className="mb-6 text-3xl font-extrabold text-foreground">
-            Usá tu Propiedad para Consolidar tus Deudas
+            Préstamos Hipotecarios con ANACO: Tu Propiedad es tu Mayor Activo
           </h2>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            Conseguir un préstamo de consolidación puede ser un proceso simple, pero las instituciones financieras tradicionales tienen exigencias altas, incluso para quienes buscan mejorar su situación financiera. Si sos propietario, podés usar el valor de tu inmueble como garantía con ANACO.
+            Conseguir un préstamo de capital de inversión puede ser un proceso simple, pero las instituciones financieras tradicionales tienen exigencias altas, incluso para quienes tienen un historial sólido. Si sos propietario, podés usar el valor de tu inmueble como garantía con ANACO.
           </p>
           <p className="mb-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            ANACO ayuda a los costarricenses a acceder al valor acumulado en sus propiedades para usarlo con cualquier propósito — incluyendo consolidación de deudas. Muchos solicitantes eligen un préstamo hipotecario sobre productos especializados porque es más flexible y accesible.
+            ANACO ayuda a los costarricenses a acceder al valor acumulado en sus propiedades para usarlo con cualquier propósito — incluyendo capital de inversión para negocios o proyectos. Muchos solicitantes eligen un préstamo hipotecario sobre productos bancarios tradicionales porque es más flexible y accesible.
           </p>
           <p className="mb-8 text-sm leading-relaxed text-muted-foreground md:text-base">
-            Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayás vivido en tu hogar, más capital tenés — lo que significa que podés acceder a montos mayores. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad para cubrir la totalidad o gran parte de tus deudas pendientes.
+            Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayas vivido en tu hogar, más capital tenés. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad.
           </p>
           <a
-            href="/calcular-credito"
+            href="/calculadora"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -464,31 +477,31 @@ function HomeEquitySection() {
 function GlossarySection() {
   const leftTerms = [
     {
-      term: "Consolidación de Deudas",
-      def: "Proceso de combinar múltiples deudas existentes — tarjetas de crédito, préstamos, saldos pendientes — en un solo crédito con una cuota fija mensual y una tasa de interés más baja.",
+      term: "Capital de trabajo",
+      def: "Fondos disponibles que una empresa utiliza para cubrir sus operaciones diarias — como compra de insumos, pago de planilla y gastos operativos. El préstamo capital de inversión de ANACO puede destinarse directamente a este fin.",
     },
     {
-      term: "Tasa de Interés sobre Saldo",
-      def: "Porcentaje que se aplica únicamente al saldo pendiente del préstamo, lo que significa que conforme pagás el capital, el monto de intereses disminuye progresivamente.",
+      term: "Valor de mercado de la propiedad",
+      def: "Precio estimado al que un inmueble puede venderse en el mercado actual, determinado mediante un avalúo profesional. Este valor es la base para calcular el monto máximo de tu préstamo con ANACO.",
     },
     {
-      term: "Cuota Fija",
-      def: "Monto mensual predeterminado que no cambia durante todo el plazo del crédito, facilitando la planificación financiera del solicitante.",
+      term: "Equity o plusvalía",
+      def: "Diferencia entre el valor comercial de tu propiedad y el saldo pendiente de cualquier hipoteca activa. Representa el capital acumulado que podés convertir en liquidez sin vender el inmueble.",
     },
   ];
 
   const rightTerms = [
     {
-      term: "Capacidad de Pago",
-      def: "Evaluación de los ingresos y gastos del solicitante para determinar cuánto puede pagar mensualmente sin comprometer su estabilidad financiera.",
+      term: "Apalancamiento financiero",
+      def: "Estrategia de usar deuda o activos existentes para amplificar el potencial de retorno de una inversión. Con ANACO, tu propiedad se convierte en palanca para acceder a capital productivo.",
     },
     {
-      term: "Garantía Hipotecaria",
-      def: "Propiedad inmueble que respalda el préstamo, permitiendo acceder a mejores tasas, plazos más amplios y montos más altos que los créditos sin garantía.",
+      term: "Cancelación anticipada",
+      def: "Posibilidad de pagar la totalidad del saldo del préstamo antes del vencimiento del plazo. ANACO permite cancelar anticipadamente sin penalidad una vez transcurrido el primer año.",
     },
     {
-      term: "Prima del Préstamo",
-      def: "Porcentaje del monto total del préstamo que se cobra como comisión inicial al momento del desembolso, cubriendo gastos administrativos y de formalización.",
+      term: "Abono extraordinario",
+      def: "Pago adicional al monto de cuota pactado, que se aplica directamente al capital del préstamo. Reducís el saldo más rápido y pagás menos intereses en total. Sin penalidad después del primer año con ANACO.",
     },
   ];
 
@@ -498,7 +511,7 @@ function GlossarySection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="mb-10 text-3xl font-extrabold text-foreground">
-          Términos Relacionados con la Consolidación de Deudas
+          Términos Relacionados con Capital de Inversión
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -547,7 +560,7 @@ function AllLoanTypesSection() {
       name: "Consolidación de Deudas",
       desc: "Unificá tus deudas en un solo préstamo con mejor tasa.",
       href: "/prestamos/consolidacion-de-deudas",
-      active: true,
+      active: false,
     },
     {
       name: "Préstamo Personal",
@@ -559,7 +572,7 @@ function AllLoanTypesSection() {
       name: "Capital de Inversión",
       desc: "Usá tu propiedad para acceder a capital de inversión.",
       href: "/prestamos/capital-de-inversion",
-      active: false,
+      active: true,
     },
     {
       name: "Remodelación de Inmueble",
@@ -576,7 +589,7 @@ function AllLoanTypesSection() {
           Explorá Todos Nuestros Préstamos Hipotecarios
         </h2>
         <p className="mb-10 text-muted-foreground">
-          Conocé el resto de nuestros productos y encontrá el que mejor se adapta a tu situación.
+          Hacé clic en cada tipo de préstamo para conocer más sobre sus beneficios y condiciones.
         </p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {loans.map((l) => (
@@ -601,24 +614,24 @@ function AllLoanTypesSection() {
 function FAQSection() {
   const faqs = [
     {
-      q: "¿Cuánto puedo obtener con un préstamo de consolidación de deudas?",
-      a: "Podés obtener desde ₡1 millón hasta ₡25 millones, dependiendo del valor de tu propiedad y tu capacidad de pago. ANACO financia hasta el 60% del valor de tu inmueble.",
+      q: "¿Cuánto capital puedo obtener con mi propiedad?",
+      a: "Podés obtener hasta el 60% del valor comercial de tu propiedad, con montos desde ₡1 millón hasta ₡25 millones. El monto exacto depende del avalúo de tu inmueble y tu capacidad de pago.",
     },
     {
-      q: "¿Necesito un historial crediticio perfecto para calificar?",
-      a: "No. ANACO evalúa principalmente el valor de tu propiedad como garantía y tu capacidad real de pago, no solo tu historial crediticio. Esto hace el proceso más accesible para la mayoría de los costarricenses.",
+      q: "¿Pierdo la propiedad si la uso como garantía?",
+      a: "No. La propiedad queda registrada como garantía hipotecaria durante el plazo del préstamo, pero permanece 100% a tu nombre. Solo en caso de incumplimiento prolongado se activaría el proceso de garantía, al igual que con cualquier crédito hipotecario.",
     },
     {
-      q: "¿Puedo consolidar deudas de tarjetas, préstamos personales y deudas de almacenes?",
-      a: "Sí. Con ANACO podés consolidar cualquier tipo de deuda — tarjetas de crédito, préstamos personales, saldos de almacenes y cualquier otra obligación financiera — en un solo crédito con cuota fija.",
+      q: "¿Puedo usar el capital para cualquier tipo de inversión?",
+      a: "Sí. ANACO no impone restricciones sobre el uso del capital. Podés destinarlo a iniciar un negocio, comprar equipo, invertir en otra propiedad, comprar inventario o cualquier oportunidad financiera que identifiqués.",
     },
     {
-      q: "¿Cuánto tiempo tarda el proceso de aprobación?",
-      a: "El proceso de aprobación con ANACO toma solo días. A diferencia de los bancos que pueden tardar semanas o meses, nuestro proceso es ágil y personalizado desde el primer contacto.",
+      q: "¿Qué documentos necesito para aplicar?",
+      a: "Generalmente se requiere cédula de identidad, escritura de la propiedad, recibos de servicios públicos y comprobantes de ingresos. Nuestro equipo te guía en el proceso desde el primer contacto para que la documentación sea lo más sencilla posible.",
     },
     {
-      q: "¿Qué pasa si quiero cancelar el préstamo antes del plazo?",
-      a: "Podés realizar abonos extraordinarios y cancelar anticipadamente tu préstamo sin penalidad después del primer año de vigencia. Esta flexibilidad te permite salir de deuda más rápido si tu situación financiera mejora.",
+      q: "¿Puedo tener más de un préstamo al mismo tiempo?",
+      a: "Sí, es posible tener más de un préstamo activo con ANACO según tu capacidad de pago y el valor disponible de tu propiedad. Cada caso se evalúa de forma personalizada para asegurarnos de que las cuotas sean manejables para vos.",
     },
   ];
 
@@ -626,7 +639,7 @@ function FAQSection() {
     <section className="bg-alt-bg px-6 py-20">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-10 text-center text-3xl font-extrabold text-foreground">
-          Preguntas Frecuentes sobre la Consolidación de Deudas
+          Preguntas Frecuentes sobre Capital de Inversión
         </h2>
         <Accordion type="single" collapsible className="flex flex-col gap-4">
           {faqs.map((f, i) => (
@@ -664,7 +677,7 @@ function TrustBanner() {
             A diferencia de los bancos tradicionales, con ANACO solo necesitás ser propietario de un inmueble para calificar. Hacemos el proceso lo más rápido y sencillo posible. Aplicar no afecta tu puntaje crediticio.
           </p>
           <a
-            href="/calcular-credito"
+            href="/calculadora"
             className="inline-block rounded-full bg-primary-foreground px-8 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -676,7 +689,7 @@ function TrustBanner() {
 }
 
 /* ─── PAGE ─── */
-function ConsolidacionDeDeudas() {
+function CapitalDeInversionPage() {
   return (
     <>
       <Header />
@@ -686,7 +699,7 @@ function ConsolidacionDeDeudas() {
         <WhatIsSection />
         <UseCasesSection />
         <WhyChooseSection
-          headingSuffix="tu Consolidación de Deudas?"
+          headingSuffix="tu Préstamo Capital de Inversión?"
           subtext="Más de 40 años siendo la solución a los problemas financieros de los costarricenses."
           className="bg-background"
         />
