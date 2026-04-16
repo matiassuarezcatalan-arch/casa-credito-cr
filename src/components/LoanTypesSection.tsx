@@ -141,7 +141,7 @@ export default function LoanTypesSection() {
               <div className="flex items-center justify-center">
                 <div className="w-full max-w-sm rounded-2xl bg-lavender p-10 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <p className="mb-2 text-sm text-muted-foreground">Créditos de hasta:</p>
-                  <p className="mb-6 text-4xl font-extrabold text-foreground">{tab.credito}</p>
+                  <p className="mb-6 text-2xl font-extrabold text-foreground sm:text-4xl">{tab.credito}</p>
                   <a
                     href={
                       activeTab === 0 ? "/prestamos/consolidacion-de-deudas" :
