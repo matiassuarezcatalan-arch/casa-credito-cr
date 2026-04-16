@@ -62,7 +62,7 @@ function HeroSection() {
             Usá el valor de tu propiedad para financiar tu negocio o inversión — sin vender ni perder tu inmueble.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="mb-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -99,7 +99,7 @@ function HowToGetSection() {
       desc: (
         <>
           Ingresá a{" "}
-          <a href="/calculadora" className="underline">
+          <a href="/calcular-credito" className="underline">
             nuestra calculadora
           </a>{" "}
           y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
@@ -151,7 +151,7 @@ function HowToGetSection() {
             ))}
           </div>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="mt-10 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -223,7 +223,7 @@ function UseCasesSection() {
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -321,7 +321,7 @@ function HowItWorksSection() {
             Los fondos pueden usarse libremente — para negocios, inversiones u oportunidades financieras — sin necesidad de justificar el uso del capital. El proceso incluye un avalúo de la propiedad, revisión de documentación y firma en notaría, después de lo cual los fondos se transfieren directamente a tu cuenta.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -462,7 +462,7 @@ function HomeEquitySection() {
             Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayas vivido en tu hogar, más capital tenés. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -677,7 +677,7 @@ function TrustBanner() {
             A diferencia de los bancos tradicionales, con ANACO solo necesitás ser propietario de un inmueble para calificar. Hacemos el proceso lo más rápido y sencillo posible. Aplicar no afecta tu puntaje crediticio.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary-foreground px-8 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90"
           >
             Solicitar Ahora

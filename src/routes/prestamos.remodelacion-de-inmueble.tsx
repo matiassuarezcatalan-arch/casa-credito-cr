@@ -62,7 +62,7 @@ function HeroSection() {
             Financiá las mejoras de tu hogar usando el valor de tu misma propiedad — sin tocar tus ahorros.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="mb-8 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -99,7 +99,7 @@ function HowToGetSection() {
       desc: (
         <>
           Ingresá a{" "}
-          <a href="/calculadora" className="underline">
+          <a href="/calcular-credito" className="underline">
             nuestra calculadora
           </a>{" "}
           y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
@@ -151,7 +151,7 @@ function HowToGetSection() {
             ))}
           </div>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="mt-10 inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -223,7 +223,7 @@ function UseCasesSection() {
         </div>
         <div className="flex flex-wrap justify-center gap-4">
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -320,7 +320,7 @@ function HowItWorksSection() {
             La tasa fija del 2.25% mensual y la cuota que nunca cambia hacen que presupuestar tu proyecto sea predecible de inicio a fin. El proceso incluye avalúo, revisión de documentación y firma en notaría, con los fondos desembolsados directamente a tu cuenta bancaria para que los administrés según avance tu obra.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -461,7 +461,7 @@ function HomeEquitySection() {
             Restando el saldo pendiente de tu hipoteca al valor actual de tu propiedad, obtenés tu capital disponible. Cuanto más tiempo hayas vivido en tu hogar, más capital tenés. Con ANACO, podés obtener hasta el 60% del valor de tu propiedad para financiar tu remodelación completa.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
@@ -676,7 +676,7 @@ function TrustBanner() {
             A diferencia de los bancos tradicionales, con ANACO solo necesitás ser propietario de un inmueble para calificar. Hacemos el proceso lo más rápido y sencillo posible. Aplicar no afecta tu puntaje crediticio.
           </p>
           <a
-            href="/calculadora"
+            href="/calcular-credito"
             className="inline-block rounded-full bg-primary-foreground px-8 py-3 text-sm font-semibold text-primary transition-opacity hover:opacity-90"
           >
             Solicitar Ahora
