@@ -30,7 +30,7 @@ const features = [
 
 export default function WhatIsSection() {
   return (
-    <section className="bg-background px-6 py-20">
+    <section id="beneficios" className="bg-background px-6 py-20">
       <div className="mx-auto max-w-5xl text-center">
         <AnimateIn>
           <div className="mb-4 flex items-center justify-center gap-2">
