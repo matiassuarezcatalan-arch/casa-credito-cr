@@ -12,13 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropiedadesIndexRouteImport } from './routes/propiedades.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as PropiedadesPropertyIdRouteImport } from './routes/propiedades.$propertyId'
 import { Route as PrestamosRemodelacionDeInmuebleRouteImport } from './routes/prestamos.remodelacion-de-inmueble'
 import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/prestamos.consolidacion-de-deudas'
 import { Route as PrestamosCapitalDeInversionRouteImport } from './routes/prestamos.capital-de-inversion'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const PropiedadesRoute = PropiedadesRouteImport.update({
   id: '/propiedades',
@@ -35,6 +38,11 @@ const CalcularCreditoRoute = CalcularCreditoRouteImport.update({
   path: '/calcular-credito',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -44,6 +52,11 @@ const PropiedadesIndexRoute = PropiedadesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PropiedadesRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
 } as any)
 const PropiedadesPropertyIdRoute = PropiedadesPropertyIdRouteImport.update({
   id: '/$propertyId',
@@ -74,83 +87,105 @@ const PrestamosCapitalDeInversionRoute =
     path: '/capital-de-inversion',
     getParentRoute: () => PrestamosRoute,
   } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
   '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRoute
   '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
+  '/blog/': typeof BlogIndexRoute
   '/propiedades/': typeof PropiedadesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
   '/prestamos': typeof PrestamosRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
   '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRoute
   '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
+  '/blog': typeof BlogIndexRoute
   '/propiedades': typeof PropiedadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
+  '/blog/$slug': typeof BlogSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
   '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRoute
   '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
+  '/blog/': typeof BlogIndexRoute
   '/propiedades/': typeof PropiedadesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog'
     | '/calcular-credito'
     | '/prestamos'
     | '/propiedades'
+    | '/blog/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
     | '/prestamos/remodelacion-de-inmueble'
     | '/propiedades/$propertyId'
+    | '/blog/'
     | '/propiedades/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/calcular-credito'
     | '/prestamos'
+    | '/blog/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
     | '/prestamos/remodelacion-de-inmueble'
     | '/propiedades/$propertyId'
+    | '/blog'
     | '/propiedades'
   id:
     | '__root__'
     | '/'
+    | '/blog'
     | '/calcular-credito'
     | '/prestamos'
     | '/propiedades'
+    | '/blog/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
     | '/prestamos/remodelacion-de-inmueble'
     | '/propiedades/$propertyId'
+    | '/blog/'
     | '/propiedades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CalcularCreditoRoute: typeof CalcularCreditoRoute
   PrestamosRoute: typeof PrestamosRouteWithChildren
   PropiedadesRoute: typeof PropiedadesRouteWithChildren
@@ -179,6 +214,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalcularCreditoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -192,6 +234,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/propiedades/'
       preLoaderRoute: typeof PropiedadesIndexRouteImport
       parentRoute: typeof PropiedadesRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
     }
     '/propiedades/$propertyId': {
       id: '/propiedades/$propertyId'
@@ -228,8 +277,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrestamosCapitalDeInversionRouteImport
       parentRoute: typeof PrestamosRoute
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
+
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 interface PrestamosRouteChildren {
   PrestamosCapitalDeInversionRoute: typeof PrestamosCapitalDeInversionRoute
@@ -265,6 +333,7 @@ const PropiedadesRouteWithChildren = PropiedadesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRouteWithChildren,
   CalcularCreditoRoute: CalcularCreditoRoute,
   PrestamosRoute: PrestamosRouteWithChildren,
   PropiedadesRoute: PropiedadesRouteWithChildren,
