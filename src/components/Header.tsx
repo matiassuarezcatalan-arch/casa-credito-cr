@@ -24,6 +24,7 @@ export default function Header() {
     { label: "Préstamos", href: "#prestamos" },
     { label: "Nosotros", href: "#nosotros" },
     { label: "Propiedades", href: "/propiedades" },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (
