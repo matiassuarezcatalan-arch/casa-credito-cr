@@ -1,5 +1,3 @@
-import matter from "gray-matter";
-
 const modules = import.meta.glob("/src/content/blog/*.md", {
   query: "?raw",
   import: "default",
@@ -17,19 +15,35 @@ export interface BlogPost {
   content: string;
 }
 
+function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!match) return { data: {}, content: raw };
+
+  const data: Record<string, string> = {};
+  for (const line of match[1].split("\n")) {
+    const colonIdx = line.indexOf(":");
+    if (colonIdx === -1) continue;
+    const key = line.slice(0, colonIdx).trim();
+    const value = line.slice(colonIdx + 1).trim().replace(/^["']|["']$/g, "");
+    if (key) data[key] = value;
+  }
+
+  return { data, content: match[2].trimStart() };
+}
+
 export function getAllPosts(): BlogPost[] {
   return Object.entries(modules)
     .map(([path, raw]) => {
       const slug = path.split("/").pop()!.replace(".md", "");
-      const { data, content } = matter(raw);
+      const { data, content } = parseFrontmatter(raw);
       return {
         slug,
-        title: data.title as string,
-        date: data.date as string,
-        excerpt: data.excerpt as string,
-        coverImage: data.coverImage as string | undefined,
-        category: data.category as string | undefined,
-        author: data.author as string | undefined,
+        title: data.title ?? "",
+        date: data.date ?? "",
+        excerpt: data.excerpt ?? "",
+        coverImage: data.coverImage,
+        category: data.category,
+        author: data.author,
         content,
       };
     })
