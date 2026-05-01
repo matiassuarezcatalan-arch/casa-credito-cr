@@ -4,6 +4,7 @@ date: "2026-04-15"
 excerpt: Descubrí cómo funciona un préstamo hipotecario en Costa Rica y por qué puede ser la solución ideal para tus necesidades financieras.
 category: Educación Financiera
 author: Equipo ANACO
+coverImage: /images/blog/hero-meeting.jpg
 ---
 
 ## ¿Qué es un Préstamo Hipotecario?
