@@ -62,6 +62,12 @@ function DefaultErrorComponent({
   );
 }
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 export const getRouter = () => {
   const router = createRouter({
     routeTree,
@@ -69,6 +75,23 @@ export const getRouter = () => {
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
     defaultErrorComponent: DefaultErrorComponent,
+  });
+
+  // GTM does not detect client-side navigation automatically.
+  // We push a virtualPageView on every route load after the first one
+  // (the first is already tracked by GTM's own gtm.js event on page load).
+  let isFirstLoad = true;
+  router.subscribe("onLoad", () => {
+    if (typeof window === "undefined") return;
+    if (isFirstLoad) {
+      isFirstLoad = false;
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "virtualPageView",
+      page_path: router.state.location.pathname + router.state.location.search,
+    });
   });
 
   return router;
