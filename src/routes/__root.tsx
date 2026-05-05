@@ -1,5 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouter } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 import { trackEvent } from "@/lib/analytics";
 
 import appCss from "../styles.css?url";
@@ -86,20 +86,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function PageViewTracker() {
-  const router = useRouter();
+  const location = useLocation();
+  const isFirst = useRef(true);
 
   useEffect(() => {
-    return router.history.subscribe(() => {
-      // Wait for React to re-render the new route and apply its head() title
-      setTimeout(() => {
-        trackEvent("virtualPageView", {
-          page_path: window.location.pathname + window.location.search,
-          page_location: window.location.href,
-          page_title: document.title,
-        });
-      }, 300);
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
+    trackEvent("virtualPageView", {
+      page_path: window.location.pathname + window.location.search,
+      page_location: window.location.href,
+      page_title: document.title,
     });
-  }, [router]);
+  }, [location.pathname]);
 
   return null;
 }
