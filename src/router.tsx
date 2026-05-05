@@ -91,6 +91,8 @@ export const getRouter = () => {
     window.dataLayer.push({
       event: "virtualPageView",
       page_path: router.state.location.pathname + router.state.location.search,
+      page_location: window.location.href,
+      page_title: document.title,
     });
   });
 
