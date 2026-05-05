@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouter } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 import appCss from "../styles.css?url";
 
@@ -90,9 +91,7 @@ function PageViewTracker() {
   useEffect(() => {
     return router.history.subscribe(() => {
       setTimeout(() => {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "virtualPageView",
+        trackEvent("virtualPageView", {
           page_path: window.location.pathname + window.location.search,
           page_location: window.location.href,
           page_title: document.title,

@@ -62,11 +62,6 @@ function DefaultErrorComponent({
   );
 }
 
-declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-  }
-}
 
 export const getRouter = () => {
   const router = createRouter({

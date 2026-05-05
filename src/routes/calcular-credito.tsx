@@ -14,6 +14,7 @@ import {
   Star,
 } from "lucide-react";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -431,9 +432,7 @@ function ContactForm({
     setSubmitting(true);
     setTimeout(() => {
       toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "lead_submission",
+      trackEvent("lead_submission", {
         loan_type: tipo,
         form_name: "contact_form",
       });
