@@ -20,11 +20,11 @@ export default function Header() {
   }, [menuOpen]);
 
   const navLinks = [
-    { label: "Beneficios", href: "#beneficios" },
-    { label: "Préstamos", href: "#prestamos" },
-    { label: "Nosotros", href: "#nosotros" },
-    { label: "Propiedades", href: "/propiedades" },
-    { label: "Blog", href: "/blog" },
+    { label: "Beneficios", href: "#beneficios", spa: false },
+    { label: "Préstamos", href: "#prestamos", spa: false },
+    { label: "Nosotros", href: "#nosotros", spa: false },
+    { label: "Propiedades", href: "/propiedades", spa: true },
+    { label: "Blog", href: "/blog", spa: true },
   ];
 
   return (
@@ -40,27 +40,37 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-foreground transition-colors hover:text-primary"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.spa ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <button className="text-muted-foreground hover:text-foreground">
             <Settings size={18} />
           </button>
         </nav>
 
         {/* Desktop CTA */}
-        <a
-          href="/calcular-credito"
+        <Link
+          to="/calcular-credito"
           className="hidden rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03] md:inline-flex"
         >
           Calcular Mi Credito
-        </a>
+        </Link>
 
         {/* Mobile burger */}
         <button
@@ -76,25 +86,36 @@ export default function Header() {
       {menuOpen && (
         <div className="border-t border-border bg-background px-6 pb-6 pt-4 md:hidden">
           <nav className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.spa ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-primary"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </nav>
           <div className="mt-5 border-t border-border pt-5">
-            <a
-              href="/calcular-credito"
+            <Link
+              to="/calcular-credito"
               onClick={() => setMenuOpen(false)}
               className="block w-full rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
             >
               Calcular Mi Credito
-            </a>
+            </Link>
           </div>
         </div>
       )}
