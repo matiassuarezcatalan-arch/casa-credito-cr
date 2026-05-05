@@ -431,6 +431,12 @@ function ContactForm({
     setSubmitting(true);
     setTimeout(() => {
       toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "lead_submission",
+        loan_type: tipo,
+        form_name: "contact_form",
+      });
       setNombre("");
       setTelefono("");
       setCorreo("");
