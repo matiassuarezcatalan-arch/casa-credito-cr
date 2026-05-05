@@ -1,5 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 
@@ -64,7 +63,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MDLHD8K3');`,
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);var p=w.history.pushState;w.history.pushState=function(){p.apply(this,arguments);setTimeout(function(){w[l].push({event:'virtualPageView',page_path:w.location.pathname+w.location.search,page_location:w.location.href,page_title:d.title});},0);};})(window,document,'script','dataLayer','GTM-MDLHD8K3');`,
           }}
         />
       </head>
@@ -84,32 +83,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-function PageViewTracker() {
-  const location = useLocation();
-  const isFirst = useRef(true);
-
-  useEffect(() => {
-    if (isFirst.current) {
-      isFirst.current = false;
-      return;
-    }
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "virtualPageView",
-      page_path: location.pathname + location.search,
-      page_location: window.location.href,
-      page_title: document.title,
-    });
-  }, [location.pathname, location.search]);
-
-  return null;
-}
-
 function RootComponent() {
-  return (
-    <>
-      <PageViewTracker />
-      <Outlet />
-    </>
-  );
+  return <Outlet />;
 }
