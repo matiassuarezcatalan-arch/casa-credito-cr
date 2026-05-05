@@ -90,13 +90,14 @@ function PageViewTracker() {
 
   useEffect(() => {
     return router.history.subscribe(() => {
+      // Wait for React to re-render the new route and apply its head() title
       setTimeout(() => {
         trackEvent("virtualPageView", {
           page_path: window.location.pathname + window.location.search,
           page_location: window.location.href,
           page_title: document.title,
         });
-      }, 0);
+      }, 300);
     });
   }, [router]);
 
