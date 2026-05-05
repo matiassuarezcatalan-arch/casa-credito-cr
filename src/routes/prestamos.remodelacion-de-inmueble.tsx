@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, X, ChevronLeft, ChevronRight, UtensilsCrossed, Layers, Waves } from "lucide-react";
 import remodelacionHeroImg from "@/assets/remodelacion-hero.jpg";
@@ -103,9 +103,9 @@ function HowToGetSection() {
       desc: (
         <>
           Ingresá a{" "}
-          <a href="/calcular-credito" className="underline">
+          <Link to="/calcular-credito" className="underline">
             nuestra calculadora
-          </a>{" "}
+          </Link>{" "}
           y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
         </>
       ),

@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Search, MessageSquareCheck, DollarSign } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 
@@ -8,7 +9,7 @@ const steps = [
     title: "Descubrí Cuánto Podés Obtener",
     desc: (
       <>
-        <a href="/calcular-credito" className="underline">Ingresá a nuestra calculadora</a> y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
+        <Link to="/calcular-credito" className="underline">Ingresá a nuestra calculadora</Link> y cotizá tu préstamo en minutos. Te contactamos para confirmar datos y resolver todas tus dudas.
       </>
     ),
   },
@@ -66,12 +67,12 @@ export default function ProcessSection() {
 
         <AnimateIn delay={500}>
           <div className="text-center">
-            <a
-              href="/calcular-credito"
+            <Link
+              to="/calcular-credito"
               className="inline-block rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
             >
               Calcular Crédito
-            </a>
+            </Link>
           </div>
         </AnimateIn>
       </div>

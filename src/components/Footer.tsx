@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { AnacoLogo } from "./AnacoBanner";
 
 export default function Footer() {
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[2fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <a href="/"><AnacoLogo className="h-14 w-14" /></a>
+            <Link to="/"><AnacoLogo className="h-14 w-14" /></Link>
             <div>
               <p className="text-sm font-bold text-foreground">INVERSIONES ANACO</p>
               <p className="text-xs text-muted-foreground">Créditos Hipotecarios</p>
@@ -32,8 +33,8 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 text-lg font-bold text-foreground">Otrás Páginas</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="/propiedades" className="hover:text-foreground">Propiedades</a></li>
-            <li><a href="/calcular-credito" className="hover:text-foreground">Calculadora</a></li>
+            <li><Link to="/propiedades" className="hover:text-foreground">Propiedades</Link></li>
+            <li><Link to="/calcular-credito" className="hover:text-foreground">Calculadora</Link></li>
             <li><a href="#" className="hover:text-foreground">Privacy policy</a></li>
           </ul>
         </div>

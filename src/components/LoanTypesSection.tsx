@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Plus, Minus } from "lucide-react";
 import { AnacoLogo } from "./AnacoBanner";
 import AnimateIn from "./AnimateIn";
@@ -142,8 +143,8 @@ export default function LoanTypesSection() {
                 <div className="w-full max-w-sm rounded-2xl bg-lavender p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-10">
                   <p className="mb-2 text-sm text-muted-foreground">Créditos de hasta:</p>
                   <p className="mb-6 whitespace-nowrap text-3xl font-extrabold text-foreground sm:text-4xl">{tab.credito}</p>
-                  <a
-                    href={
+                  <Link
+                    to={
                       activeTab === 0 ? "/prestamos/consolidacion-de-deudas" :
                       activeTab === 1 ? "/prestamos/prestamo-personal" :
                       activeTab === 2 ? "/prestamos/capital-de-inversion" :
@@ -153,7 +154,7 @@ export default function LoanTypesSection() {
                     className="inline-block rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.03]"
                   >
                     Obtener Mi Credito
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
