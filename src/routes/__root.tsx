@@ -1,5 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouter } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 import appCss from "../styles.css?url";
 
@@ -85,23 +85,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function PageViewTracker() {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const search = useRouterState({ select: (s) => s.location.search });
-  const isFirst = useRef(true);
+  const router = useRouter();
 
   useEffect(() => {
-    if (isFirst.current) {
-      isFirst.current = false;
-      return;
-    }
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "virtualPageView",
-      page_path: pathname + search,
-      page_location: window.location.href,
-      page_title: document.title,
+    return router.history.subscribe(() => {
+      setTimeout(() => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "virtualPageView",
+          page_path: window.location.pathname + window.location.search,
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+      }, 0);
     });
-  }, [pathname, search]);
+  }, [router]);
 
   return null;
 }
