@@ -1,4 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 
 import appCss from "../styles.css?url";
 
@@ -83,6 +84,32 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+function PageViewTracker() {
+  const location = useLocation();
+  const isFirst = useRef(true);
+
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "virtualPageView",
+      page_path: location.pathname + location.search,
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }, [location.pathname, location.search]);
+
+  return null;
+}
+
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <PageViewTracker />
+      <Outlet />
+    </>
+  );
 }
