@@ -419,6 +419,27 @@ function ContactForm({
   const [tipo, setTipo] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [attribution, setAttribution] = useState({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_content: '',
+    utm_term: '',
+    gclid: '',
+    fbclid: '',
+  });
+
+  useEffect(() => {
+    setAttribution({
+      utm_source: localStorage.getItem('utm_source') ?? '',
+      utm_medium: localStorage.getItem('utm_medium') ?? '',
+      utm_campaign: localStorage.getItem('utm_campaign') ?? '',
+      utm_content: localStorage.getItem('utm_content') ?? '',
+      utm_term: localStorage.getItem('utm_term') ?? '',
+      gclid: localStorage.getItem('gclid') ?? '',
+      fbclid: localStorage.getItem('fbclid') ?? '',
+    });
+  }, []);
 
   // Sync when parent passes a new prefill amount (calculator → form)
   useEffect(() => {
@@ -435,6 +456,7 @@ function ContactForm({
       trackEvent("lead_submission", {
         loan_type: tipo,
         form_name: "contact_form",
+        ...attribution,
       });
       setNombre("");
       setTelefono("");
