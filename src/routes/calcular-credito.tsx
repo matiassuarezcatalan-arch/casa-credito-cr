@@ -451,19 +451,32 @@ function ContactForm({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
+
+    const payload = {
+      nombre,
+      telefono,
+      correo,
+      monto,
+      loan_type: tipo,
+      mensaje,
+      form_name: "contact_form",
+      ...attribution,
+    };
+
     setTimeout(() => {
-      toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
-      trackEvent("lead_submission", {
-        loan_type: tipo,
-        form_name: "contact_form",
-        ...attribution,
-      });
-      setNombre("");
-      setTelefono("");
-      setCorreo("");
-      setMonto("");
-      setTipo("");
-      setMensaje("");
+      const success = true; // replace with real backend response
+
+      if (success) {
+        toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
+        trackEvent("lead_submission", payload);
+        setNombre("");
+        setTelefono("");
+        setCorreo("");
+        setMonto("");
+        setTipo("");
+        setMensaje("");
+      }
+
       setSubmitting(false);
     }, 600);
   }
