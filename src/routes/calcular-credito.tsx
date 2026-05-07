@@ -448,7 +448,7 @@ function ContactForm({
     }
   }, [prefillAmount]);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
 
@@ -460,25 +460,38 @@ function ContactForm({
       loan_type: tipo,
       mensaje,
       form_name: "contact_form",
+      timestamp: new Date().toISOString(),
       ...attribution,
     };
 
-    setTimeout(() => {
-      const success = true; // replace with real backend response
+    try {
+      const response = await fetch(
+        "https://hook.us2.make.com/db7sewijo2icw3dt17bkc3hfonbzuaep",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
-      if (success) {
-        toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
-        trackEvent("lead_submission", payload);
-        setNombre("");
-        setTelefono("");
-        setCorreo("");
-        setMonto("");
-        setTipo("");
-        setMensaje("");
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
       }
 
+      toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
+      trackEvent("lead_submission", payload);
+      setNombre("");
+      setTelefono("");
+      setCorreo("");
+      setMonto("");
+      setTipo("");
+      setMensaje("");
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Hubo un error al enviar tu solicitud. Por favor intentá de nuevo.");
+    } finally {
       setSubmitting(false);
-    }, 600);
+    }
   }
 
   const inputClass =
