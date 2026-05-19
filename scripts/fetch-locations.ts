@@ -1,7 +1,10 @@
 import { writeFileSync } from "fs";
 
 const url = process.env.LOCATIONS_SHEET_URL;
-if (!url) throw new Error("LOCATIONS_SHEET_URL env var is not set");
+if (!url) {
+  console.log("⚠ LOCATIONS_SHEET_URL not set — skipping sheet sync, using committed locations.json");
+  process.exit(0);
+}
 
 const res = await fetch(url);
 if (!res.ok) throw new Error(`Failed to fetch sheet: ${res.status}`);
