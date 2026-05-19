@@ -1,0 +1,114 @@
+[
+  {
+    "service_key": "capital-de-inversion",
+    "location_slug": "san-jose",
+    "location_name": "San José",
+    "meta_title": "Préstamo Capital de Inversión en San José",
+    "meta_description": "Accedé hasta ₡25.000.000 de inversion de capital usando el valor de tu propiedad en San José como garantía. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "capital-de-inversion",
+    "location_slug": "heredia",
+    "location_name": "Heredia",
+    "meta_title": "Préstamo Capital de Inversión en Heredia",
+    "meta_description": "Accedé hasta ₡25.000.000 de inversion de capital usando el valor de tu propiedad en Heredia como garantía. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "capital-de-inversion",
+    "location_slug": "alajuela",
+    "location_name": "Alajuela",
+    "meta_title": "Préstamo Capital de Inversión en Alajuela",
+    "meta_description": "Accedé hasta ₡25.000.000 de inversion de capital usando el valor de tu propiedad en Alajuela como garantía. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "capital-de-inversion",
+    "location_slug": "cartago",
+    "location_name": "Cartago",
+    "meta_title": "Préstamo Capital de Inversión en Cartago",
+    "meta_description": "Accedé hasta ₡25.000.000 de inversion de capital usando el valor de tu propiedad en Cartago como garantía. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "prestamo-personal",
+    "location_slug": "san-jose",
+    "location_name": "San José",
+    "meta_title": "Préstamo Personal en San José",
+    "meta_description": "Obtené un préstamo personal en San José con ANACO. Sin restricciones de uso"
+  },
+  {
+    "service_key": "prestamo-personal",
+    "location_slug": "heredia",
+    "location_name": "Heredia",
+    "meta_title": "Préstamo Personal en Heredia",
+    "meta_description": "Obtené un préstamo personal en Heredia con ANACO. Sin restricciones de uso"
+  },
+  {
+    "service_key": "prestamo-personal",
+    "location_slug": "alajuela",
+    "location_name": "Alajuela",
+    "meta_title": "Préstamo Personal en Alajuela",
+    "meta_description": "Obtené un préstamo personal en Alajuela con ANACO. Sin restricciones de uso"
+  },
+  {
+    "service_key": "prestamo-personal",
+    "location_slug": "cartago",
+    "location_name": "Cartago",
+    "meta_title": "Préstamo Personal en Cartago",
+    "meta_description": "Obtené un préstamo personal en Cartago con ANACO. Sin restricciones de uso"
+  },
+  {
+    "service_key": "consolidacion-de-deudas",
+    "location_slug": "san-jose",
+    "location_name": "San José",
+    "meta_title": "Consolidacion de Deudas en San José",
+    "meta_description": "Consolidá todas tus deudas en un solo pago mensual con ANACO en San José. Tasa fija del 2.25% mensual"
+  },
+  {
+    "service_key": "consolidacion-de-deudas",
+    "location_slug": "heredia",
+    "location_name": "Heredia",
+    "meta_title": "Consolidacion de Deudas en Heredia",
+    "meta_description": "Consolidá todas tus deudas en un solo pago mensual con ANACO en Heredia. Tasa fija del 2.25% mensual"
+  },
+  {
+    "service_key": "consolidacion-de-deudas",
+    "location_slug": "alajuela",
+    "location_name": "Alajuela",
+    "meta_title": "Consolidacion de Deudas en Alajuela",
+    "meta_description": "Consolidá todas tus deudas en un solo pago mensual con ANACO en Alajuela. Tasa fija del 2.25% mensual"
+  },
+  {
+    "service_key": "consolidacion-de-deudas",
+    "location_slug": "cartago",
+    "location_name": "Cartago",
+    "meta_title": "Consolidacion de Deudas en Cartago",
+    "meta_description": "Consolidá todas tus deudas en un solo pago mensual con ANACO en Cartago. Tasa fija del 2.25% mensual"
+  },
+  {
+    "service_key": "remodelacion-de-inmueble",
+    "location_slug": "san-jose",
+    "location_name": "San José",
+    "meta_title": "Remodelacion de Inmueble en San José",
+    "meta_description": "Financiá la remodelación de tu hogar en San José hasta ₡5.000.000 usando el valor de tu propiedad. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "remodelacion-de-inmueble",
+    "location_slug": "heredia",
+    "location_name": "Heredia",
+    "meta_title": "Remodelacion de Inmueble en Heredia",
+    "meta_description": "Financiá la remodelación de tu hogar en Heredia hasta ₡5.000.000 usando el valor de tu propiedad. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "remodelacion-de-inmueble",
+    "location_slug": "alajuela",
+    "location_name": "Alajuela",
+    "meta_title": "Remodelacion de Inmueble en Alajuela",
+    "meta_description": "Financiá la remodelación de tu hogar en Alajuela hasta ₡5.000.000 usando el valor de tu propiedad. Tasa fija 2.25% mensual"
+  },
+  {
+    "service_key": "remodelacion-de-inmueble",
+    "location_slug": "cartago",
+    "location_name": "Cartago",
+    "meta_title": "Remodelacion de Inmueble en Cartago",
+    "meta_description": "Financiá la remodelación de tu hogar en Cartago hasta ₡5.000.000 usando el valor de tu propiedad. Tasa fija 2.25% mensual"
+  }
+]
