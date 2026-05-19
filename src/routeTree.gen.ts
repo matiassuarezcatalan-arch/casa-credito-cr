@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
 import { Route as LocalesRouteImport } from './routes/locales'
+import { Route as CoberturaRouteImport } from './routes/cobertura'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
@@ -46,6 +47,11 @@ const PrestamosRoute = PrestamosRouteImport.update({
 const LocalesRoute = LocalesRouteImport.update({
   id: '/locales',
   path: '/locales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoberturaRoute = CoberturaRouteImport.update({
+  id: '/cobertura',
+  path: '/cobertura',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalcularCreditoRoute = CalcularCreditoRouteImport.update({
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/cobertura': typeof CoberturaRoute
   '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
@@ -189,6 +196,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/cobertura': typeof CoberturaRoute
   '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
@@ -210,6 +218,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/cobertura': typeof CoberturaRoute
   '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
@@ -237,6 +246,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blog'
     | '/calcular-credito'
+    | '/cobertura'
     | '/locales'
     | '/prestamos'
     | '/propiedades'
@@ -261,6 +271,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/calcular-credito'
+    | '/cobertura'
     | '/locales'
     | '/prestamos'
     | '/blog/$slug'
@@ -281,6 +292,7 @@ export interface FileRouteTypes {
     | '/'
     | '/blog'
     | '/calcular-credito'
+    | '/cobertura'
     | '/locales'
     | '/prestamos'
     | '/propiedades'
@@ -307,6 +319,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRouteWithChildren
   CalcularCreditoRoute: typeof CalcularCreditoRoute
+  CoberturaRoute: typeof CoberturaRoute
   LocalesRoute: typeof LocalesRouteWithChildren
   PrestamosRoute: typeof PrestamosRouteWithChildren
   PropiedadesRoute: typeof PropiedadesRouteWithChildren
@@ -333,6 +346,13 @@ declare module '@tanstack/react-router' {
       path: '/locales'
       fullPath: '/locales'
       preLoaderRoute: typeof LocalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cobertura': {
+      id: '/cobertura'
+      path: '/cobertura'
+      fullPath: '/cobertura'
+      preLoaderRoute: typeof CoberturaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calcular-credito': {
@@ -611,6 +631,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRouteWithChildren,
   CalcularCreditoRoute: CalcularCreditoRoute,
+  CoberturaRoute: CoberturaRoute,
   LocalesRoute: LocalesRouteWithChildren,
   PrestamosRoute: PrestamosRouteWithChildren,
   PropiedadesRoute: PropiedadesRouteWithChildren,
