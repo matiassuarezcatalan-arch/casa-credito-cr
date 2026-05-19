@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "capital-de-inversion-san-jose",
+    "location": "San José",
+    "serviceName": "Capital de Inversión",
+    "parentServicePath": "/prestamos/capital-de-inversion",
+    "targetKeyword": "préstamo capital de inversión San José",
+    "h1": "Préstamo Capital de Inversión en San José",
+    "metaDescription": "Obtenga hasta ₡25 millones con garantía hipotecaria en San José. Tasa fija del 2.25% mensual y plazos hasta 10 años. Inversiones ANACO, su financiera de confianza en Costa Rica.",
+    "localHook": "En San José, el centro financiero de Costa Rica, Inversiones ANACO le ofrece acceso rápido a capital para impulsar su negocio o proyecto de inversión, con una tasa fija y condiciones claras desde el primer día."
+  },
+  {
+    "slug": "consolidacion-de-deudas-heredia",
+    "location": "Heredia",
+    "serviceName": "Consolidación de Deudas",
+    "parentServicePath": "/prestamos/consolidacion-de-deudas",
+    "targetKeyword": "consolidación de deudas Heredia Costa Rica",
+    "h1": "Consolidación de Deudas en Heredia",
+    "metaDescription": "Unificá todas sus deudas en una sola cuota fija en Heredia. Préstamos hipotecarios hasta ₡25 millones con ANACO. Simplificá sus finanzas y recuperá tranquilidad económica hoy.",
+    "localHook": "Residentes de Heredia confían en Inversiones ANACO para unificar sus compromisos financieros en una única cuota mensual accesible, respaldada por la garantía hipotecaria de su propiedad."
+  },
+  {
+    "slug": "prestamo-personal-alajuela",
+    "location": "Alajuela",
+    "serviceName": "Préstamo de Uso Personal",
+    "parentServicePath": "/prestamos/prestamo-personal",
+    "targetKeyword": "préstamo personal Alajuela Costa Rica",
+    "h1": "Préstamo de Uso Personal en Alajuela",
+    "metaDescription": "Financiá lo que necesitás en Alajuela con un préstamo personal hipotecario de hasta ₡5 millones. Tasa fija del 2.25% mensual. Aprobación rápida con Inversiones ANACO.",
+    "localHook": "En Alajuela, Inversiones ANACO pone a su disposición préstamos personales con garantía hipotecaria para que pueda atender sus necesidades inmediatas con una cuota fija, justa y sin sorpresas."
+  },
+  {
+    "slug": "remodelacion-de-inmueble-cartago",
+    "location": "Cartago",
+    "serviceName": "Remodelación de Inmueble",
+    "parentServicePath": "/prestamos/remodelacion-de-inmueble",
+    "targetKeyword": "préstamo remodelación de casa Cartago Costa Rica",
+    "h1": "Préstamo para Remodelación de Inmueble en Cartago",
+    "metaDescription": "Remodelá su propiedad en Cartago con financiamiento hipotecario de hasta ₡25 millones. Tasa fija del 2.25% mensual y plazos flexibles. Inversiones ANACO, soluciones reales para su hogar.",
+    "localHook": "Propietarios en Cartago eligen a Inversiones ANACO para financiar la renovación de sus hogares, aprovechando el valor de su inmueble para obtener el capital necesario con condiciones fijas y transparentes."
+  }
+]

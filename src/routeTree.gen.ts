@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
+import { Route as LocalesRouteImport } from './routes/locales'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
@@ -21,6 +22,7 @@ import { Route as PrestamosRemodelacionDeInmuebleRouteImport } from './routes/pr
 import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/prestamos.consolidacion-de-deudas'
 import { Route as PrestamosCapitalDeInversionRouteImport } from './routes/prestamos.capital-de-inversion'
+import { Route as LocalesSlugRouteImport } from './routes/locales.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const PropiedadesRoute = PropiedadesRouteImport.update({
@@ -31,6 +33,11 @@ const PropiedadesRoute = PropiedadesRouteImport.update({
 const PrestamosRoute = PrestamosRouteImport.update({
   id: '/prestamos',
   path: '/prestamos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalesRoute = LocalesRouteImport.update({
+  id: '/locales',
+  path: '/locales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalcularCreditoRoute = CalcularCreditoRouteImport.update({
@@ -87,6 +94,11 @@ const PrestamosCapitalDeInversionRoute =
     path: '/capital-de-inversion',
     getParentRoute: () => PrestamosRoute,
   } as any)
+const LocalesSlugRoute = LocalesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LocalesRoute,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -97,9 +109,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
+  '/locales/$slug': typeof LocalesSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -111,8 +125,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
+  '/locales/$slug': typeof LocalesSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -126,9 +142,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
+  '/locales/$slug': typeof LocalesSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
   '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
@@ -143,9 +161,11 @@ export interface FileRouteTypes {
     | '/'
     | '/blog'
     | '/calcular-credito'
+    | '/locales'
     | '/prestamos'
     | '/propiedades'
     | '/blog/$slug'
+    | '/locales/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -157,8 +177,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/calcular-credito'
+    | '/locales'
     | '/prestamos'
     | '/blog/$slug'
+    | '/locales/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -171,9 +193,11 @@ export interface FileRouteTypes {
     | '/'
     | '/blog'
     | '/calcular-credito'
+    | '/locales'
     | '/prestamos'
     | '/propiedades'
     | '/blog/$slug'
+    | '/locales/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -187,6 +211,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRouteWithChildren
   CalcularCreditoRoute: typeof CalcularCreditoRoute
+  LocalesRoute: typeof LocalesRouteWithChildren
   PrestamosRoute: typeof PrestamosRouteWithChildren
   PropiedadesRoute: typeof PropiedadesRouteWithChildren
 }
@@ -205,6 +230,13 @@ declare module '@tanstack/react-router' {
       path: '/prestamos'
       fullPath: '/prestamos'
       preLoaderRoute: typeof PrestamosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locales': {
+      id: '/locales'
+      path: '/locales'
+      fullPath: '/locales'
+      preLoaderRoute: typeof LocalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calcular-credito': {
@@ -277,6 +309,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrestamosCapitalDeInversionRouteImport
       parentRoute: typeof PrestamosRoute
     }
+    '/locales/$slug': {
+      id: '/locales/$slug'
+      path: '/$slug'
+      fullPath: '/locales/$slug'
+      preLoaderRoute: typeof LocalesSlugRouteImport
+      parentRoute: typeof LocalesRoute
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/$slug'
@@ -298,6 +337,17 @@ const BlogRouteChildren: BlogRouteChildren = {
 }
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
+interface LocalesRouteChildren {
+  LocalesSlugRoute: typeof LocalesSlugRoute
+}
+
+const LocalesRouteChildren: LocalesRouteChildren = {
+  LocalesSlugRoute: LocalesSlugRoute,
+}
+
+const LocalesRouteWithChildren =
+  LocalesRoute._addFileChildren(LocalesRouteChildren)
 
 interface PrestamosRouteChildren {
   PrestamosCapitalDeInversionRoute: typeof PrestamosCapitalDeInversionRoute
@@ -335,6 +385,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRouteWithChildren,
   CalcularCreditoRoute: CalcularCreditoRoute,
+  LocalesRoute: LocalesRouteWithChildren,
   PrestamosRoute: PrestamosRouteWithChildren,
   PropiedadesRoute: PropiedadesRouteWithChildren,
 }
