@@ -1,6 +1,6 @@
 ---
 title: "Préstamos para Educación Privada en Costa Rica: Guía Completa 2024"
-date: ""2026-05-01"
+date: "2026-05-01"
 excerpt: "Descubre todas las opciones de crédito educativo para financiar tus estudios en universidades privadas de Costa Rica. Comparamos tasas, requisitos y condiciones de los principales bancos."
 category: "Préstamos Personales"
 author: "Anaco Costa Rica"

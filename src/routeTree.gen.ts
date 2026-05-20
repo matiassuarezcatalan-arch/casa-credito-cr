@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
@@ -23,6 +25,16 @@ import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/pre
 import { Route as PrestamosCapitalDeInversionRouteImport } from './routes/prestamos.capital-de-inversion'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropiedadesRoute = PropiedadesRouteImport.update({
   id: '/propiedades',
   path: '/propiedades',
@@ -99,6 +111,8 @@ export interface FileRoutesByFullPath {
   '/calcular-credito': typeof CalcularCreditoRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
@@ -112,6 +126,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
   '/prestamos': typeof PrestamosRouteWithChildren
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
@@ -128,6 +144,8 @@ export interface FileRoutesById {
   '/calcular-credito': typeof CalcularCreditoRoute
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
   '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
@@ -145,6 +163,8 @@ export interface FileRouteTypes {
     | '/calcular-credito'
     | '/prestamos'
     | '/propiedades'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/blog/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
@@ -158,6 +178,8 @@ export interface FileRouteTypes {
     | '/'
     | '/calcular-credito'
     | '/prestamos'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/blog/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
@@ -173,6 +195,8 @@ export interface FileRouteTypes {
     | '/calcular-credito'
     | '/prestamos'
     | '/propiedades'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/blog/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
@@ -189,10 +213,26 @@ export interface RootRouteChildren {
   CalcularCreditoRoute: typeof CalcularCreditoRoute
   PrestamosRoute: typeof PrestamosRouteWithChildren
   PropiedadesRoute: typeof PropiedadesRouteWithChildren
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/propiedades': {
       id: '/propiedades'
       path: '/propiedades'
@@ -337,6 +377,8 @@ const rootRouteChildren: RootRouteChildren = {
   CalcularCreditoRoute: CalcularCreditoRoute,
   PrestamosRoute: PrestamosRouteWithChildren,
   PropiedadesRoute: PropiedadesRouteWithChildren,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

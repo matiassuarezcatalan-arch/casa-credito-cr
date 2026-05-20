@@ -1,6 +1,6 @@
 ---
 title: "Estrategias de Ahorro e Inversión en Costa Rica: Guía Completa 2024"
-date: ""2026-05-01"
+date: "2026-05-01"
 excerpt: "Descubre las mejores estrategias de ahorro e inversión adaptadas al mercado costarricense. Aprende a construir un patrimonio sólido combinando técnicas de ahorro efectivas con opciones de inversión seguras y rentables."
 category: "Educación Financiera"
 author: "Anaco Costa Rica"

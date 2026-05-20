@@ -1,6 +1,6 @@
 ---
 title: "Préstamos Privados para Comprar un Auto en Costa Rica: Guía Completa 2024"
-date: ""2026-05-01"
+date: "2026-05-01"
 excerpt: "Descubre cómo funcionan los préstamos privados para financiar tu vehículo en Costa Rica, qué requisitos necesitas, cuáles son las tasas de interés promedio y los recaudos legales que debes tomar antes de firmar."
 category: "Préstamos Personales"
 author: "Anaco Costa Rica"

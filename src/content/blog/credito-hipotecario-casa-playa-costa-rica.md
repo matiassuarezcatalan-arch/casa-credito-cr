@@ -1,6 +1,6 @@
 ---
 title: "Crédito Hipotecario para Casa de Playa en Costa Rica: Guía Completa 2024"
-date: ""2026-05-01"
+date: "2026-05-01"
 excerpt: "Descubre cómo financiar tu propiedad vacacional en Costa Rica con crédito hipotecario. Conoce requisitos, tasas de interés y opciones de bancos para tu segunda vivienda."
 category: "Hipotecas"
 author: "Anaco Costa Rica"

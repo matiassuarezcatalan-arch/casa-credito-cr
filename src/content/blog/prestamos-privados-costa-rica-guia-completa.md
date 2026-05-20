@@ -1,6 +1,6 @@
 ---
 title: "Préstamos Privados en Costa Rica: Guía Completa 2024 para Obtener Financiamiento Seguro"
-date: ""2026-05-01"
+date: "2026-05-01"
 excerpt: "Descubre todo sobre los préstamos privados en Costa Rica: requisitos, tasas de interés, ventajas y cómo protegerte de fraudes al solicitar financiamiento alternativo fuera del sistema bancario tradicional."
 category: "Préstamos Personales"
 author: "Anaco Costa Rica"
