@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { getAllPosts } from "@/lib/blog";
 import { properties } from "@/data/properties";
+import seoPages from "@/data/seo-pages.json";
+import locations from "@/data/locations.json";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
@@ -27,6 +29,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           "/prestamos/prestamo-personal",
           "/prestamos/remodelacion-de-inmueble",
           "/propiedades",
+          "/cobertura",
+          "/locales",
         ];
 
         const currentDate = new Date().toISOString().split("T")[0];
@@ -50,6 +54,18 @@ export const Route = createFileRoute("/sitemap.xml")({
             loc: `${host}/propiedades/${property.id}`,
             lastmod: currentDate,
             changefreq: "monthly",
+            priority: "0.7",
+          })),
+          ...seoPages.map((page) => ({
+            loc: `${host}/locales/${page.slug}`,
+            lastmod: currentDate,
+            changefreq: "weekly",
+            priority: "0.7",
+          })),
+          ...locations.map((loc) => ({
+            loc: `${host}/prestamos/${loc.service_key}/${loc.location_slug}`,
+            lastmod: currentDate,
+            changefreq: "weekly",
             priority: "0.7",
           })),
         ];
