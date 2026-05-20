@@ -13,6 +13,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as PrestamosRouteImport } from './routes/prestamos'
+import { Route as LocalesRouteImport } from './routes/locales'
+import { Route as CoberturaRouteImport } from './routes/cobertura'
 import { Route as CalcularCreditoRouteImport } from './routes/calcular-credito'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,7 +25,16 @@ import { Route as PrestamosRemodelacionDeInmuebleRouteImport } from './routes/pr
 import { Route as PrestamosPrestamoPersonalRouteImport } from './routes/prestamos.prestamo-personal'
 import { Route as PrestamosConsolidacionDeDeudasRouteImport } from './routes/prestamos.consolidacion-de-deudas'
 import { Route as PrestamosCapitalDeInversionRouteImport } from './routes/prestamos.capital-de-inversion'
+import { Route as LocalesSlugRouteImport } from './routes/locales.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as PrestamosRemodelacionDeInmuebleIndexRouteImport } from './routes/prestamos.remodelacion-de-inmueble.index'
+import { Route as PrestamosPrestamoPersonalIndexRouteImport } from './routes/prestamos.prestamo-personal.index'
+import { Route as PrestamosConsolidacionDeDeudasIndexRouteImport } from './routes/prestamos.consolidacion-de-deudas.index'
+import { Route as PrestamosCapitalDeInversionIndexRouteImport } from './routes/prestamos.capital-de-inversion.index'
+import { Route as PrestamosRemodelacionDeInmuebleLocationRouteImport } from './routes/prestamos.remodelacion-de-inmueble.$location'
+import { Route as PrestamosPrestamoPersonalLocationRouteImport } from './routes/prestamos.prestamo-personal.$location'
+import { Route as PrestamosConsolidacionDeDeudasLocationRouteImport } from './routes/prestamos.consolidacion-de-deudas.$location'
+import { Route as PrestamosCapitalDeInversionLocationRouteImport } from './routes/prestamos.capital-de-inversion.$location'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -43,6 +54,16 @@ const PropiedadesRoute = PropiedadesRouteImport.update({
 const PrestamosRoute = PrestamosRouteImport.update({
   id: '/prestamos',
   path: '/prestamos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalesRoute = LocalesRouteImport.update({
+  id: '/locales',
+  path: '/locales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoberturaRoute = CoberturaRouteImport.update({
+  id: '/cobertura',
+  path: '/cobertura',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalcularCreditoRoute = CalcularCreditoRouteImport.update({
@@ -99,61 +120,143 @@ const PrestamosCapitalDeInversionRoute =
     path: '/capital-de-inversion',
     getParentRoute: () => PrestamosRoute,
   } as any)
+const LocalesSlugRoute = LocalesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LocalesRoute,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const PrestamosRemodelacionDeInmuebleIndexRoute =
+  PrestamosRemodelacionDeInmuebleIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PrestamosRemodelacionDeInmuebleRoute,
+  } as any)
+const PrestamosPrestamoPersonalIndexRoute =
+  PrestamosPrestamoPersonalIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PrestamosPrestamoPersonalRoute,
+  } as any)
+const PrestamosConsolidacionDeDeudasIndexRoute =
+  PrestamosConsolidacionDeDeudasIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PrestamosConsolidacionDeDeudasRoute,
+  } as any)
+const PrestamosCapitalDeInversionIndexRoute =
+  PrestamosCapitalDeInversionIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PrestamosCapitalDeInversionRoute,
+  } as any)
+const PrestamosRemodelacionDeInmuebleLocationRoute =
+  PrestamosRemodelacionDeInmuebleLocationRouteImport.update({
+    id: '/$location',
+    path: '/$location',
+    getParentRoute: () => PrestamosRemodelacionDeInmuebleRoute,
+  } as any)
+const PrestamosPrestamoPersonalLocationRoute =
+  PrestamosPrestamoPersonalLocationRouteImport.update({
+    id: '/$location',
+    path: '/$location',
+    getParentRoute: () => PrestamosPrestamoPersonalRoute,
+  } as any)
+const PrestamosConsolidacionDeDeudasLocationRoute =
+  PrestamosConsolidacionDeDeudasLocationRouteImport.update({
+    id: '/$location',
+    path: '/$location',
+    getParentRoute: () => PrestamosConsolidacionDeDeudasRoute,
+  } as any)
+const PrestamosCapitalDeInversionLocationRoute =
+  PrestamosCapitalDeInversionLocationRouteImport.update({
+    id: '/$location',
+    path: '/$location',
+    getParentRoute: () => PrestamosCapitalDeInversionRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/cobertura': typeof CoberturaRoute
+  '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
-  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
-  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
-  '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRoute
+  '/locales/$slug': typeof LocalesSlugRoute
+  '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRouteWithChildren
+  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRouteWithChildren
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRouteWithChildren
+  '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRouteWithChildren
   '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
   '/blog/': typeof BlogIndexRoute
   '/propiedades/': typeof PropiedadesIndexRoute
+  '/prestamos/capital-de-inversion/$location': typeof PrestamosCapitalDeInversionLocationRoute
+  '/prestamos/consolidacion-de-deudas/$location': typeof PrestamosConsolidacionDeDeudasLocationRoute
+  '/prestamos/prestamo-personal/$location': typeof PrestamosPrestamoPersonalLocationRoute
+  '/prestamos/remodelacion-de-inmueble/$location': typeof PrestamosRemodelacionDeInmuebleLocationRoute
+  '/prestamos/capital-de-inversion/': typeof PrestamosCapitalDeInversionIndexRoute
+  '/prestamos/consolidacion-de-deudas/': typeof PrestamosConsolidacionDeDeudasIndexRoute
+  '/prestamos/prestamo-personal/': typeof PrestamosPrestamoPersonalIndexRoute
+  '/prestamos/remodelacion-de-inmueble/': typeof PrestamosRemodelacionDeInmuebleIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/cobertura': typeof CoberturaRoute
+  '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
-  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
-  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
-  '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRoute
+  '/locales/$slug': typeof LocalesSlugRoute
   '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
   '/blog': typeof BlogIndexRoute
   '/propiedades': typeof PropiedadesIndexRoute
+  '/prestamos/capital-de-inversion/$location': typeof PrestamosCapitalDeInversionLocationRoute
+  '/prestamos/consolidacion-de-deudas/$location': typeof PrestamosConsolidacionDeDeudasLocationRoute
+  '/prestamos/prestamo-personal/$location': typeof PrestamosPrestamoPersonalLocationRoute
+  '/prestamos/remodelacion-de-inmueble/$location': typeof PrestamosRemodelacionDeInmuebleLocationRoute
+  '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionIndexRoute
+  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasIndexRoute
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalIndexRoute
+  '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRouteWithChildren
   '/calcular-credito': typeof CalcularCreditoRoute
+  '/cobertura': typeof CoberturaRoute
+  '/locales': typeof LocalesRouteWithChildren
   '/prestamos': typeof PrestamosRouteWithChildren
   '/propiedades': typeof PropiedadesRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRoute
-  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRoute
-  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRoute
-  '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRoute
+  '/locales/$slug': typeof LocalesSlugRoute
+  '/prestamos/capital-de-inversion': typeof PrestamosCapitalDeInversionRouteWithChildren
+  '/prestamos/consolidacion-de-deudas': typeof PrestamosConsolidacionDeDeudasRouteWithChildren
+  '/prestamos/prestamo-personal': typeof PrestamosPrestamoPersonalRouteWithChildren
+  '/prestamos/remodelacion-de-inmueble': typeof PrestamosRemodelacionDeInmuebleRouteWithChildren
   '/propiedades/$propertyId': typeof PropiedadesPropertyIdRoute
   '/blog/': typeof BlogIndexRoute
   '/propiedades/': typeof PropiedadesIndexRoute
+  '/prestamos/capital-de-inversion/$location': typeof PrestamosCapitalDeInversionLocationRoute
+  '/prestamos/consolidacion-de-deudas/$location': typeof PrestamosConsolidacionDeDeudasLocationRoute
+  '/prestamos/prestamo-personal/$location': typeof PrestamosPrestamoPersonalLocationRoute
+  '/prestamos/remodelacion-de-inmueble/$location': typeof PrestamosRemodelacionDeInmuebleLocationRoute
+  '/prestamos/capital-de-inversion/': typeof PrestamosCapitalDeInversionIndexRoute
+  '/prestamos/consolidacion-de-deudas/': typeof PrestamosConsolidacionDeDeudasIndexRoute
+  '/prestamos/prestamo-personal/': typeof PrestamosPrestamoPersonalIndexRoute
+  '/prestamos/remodelacion-de-inmueble/': typeof PrestamosRemodelacionDeInmuebleIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,11 +264,14 @@ export interface FileRouteTypes {
     | '/'
     | '/blog'
     | '/calcular-credito'
+    | '/cobertura'
+    | '/locales'
     | '/prestamos'
     | '/propiedades'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/locales/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -173,31 +279,49 @@ export interface FileRouteTypes {
     | '/propiedades/$propertyId'
     | '/blog/'
     | '/propiedades/'
+    | '/prestamos/capital-de-inversion/$location'
+    | '/prestamos/consolidacion-de-deudas/$location'
+    | '/prestamos/prestamo-personal/$location'
+    | '/prestamos/remodelacion-de-inmueble/$location'
+    | '/prestamos/capital-de-inversion/'
+    | '/prestamos/consolidacion-de-deudas/'
+    | '/prestamos/prestamo-personal/'
+    | '/prestamos/remodelacion-de-inmueble/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/calcular-credito'
+    | '/cobertura'
+    | '/locales'
     | '/prestamos'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/locales/$slug'
+    | '/propiedades/$propertyId'
+    | '/blog'
+    | '/propiedades'
+    | '/prestamos/capital-de-inversion/$location'
+    | '/prestamos/consolidacion-de-deudas/$location'
+    | '/prestamos/prestamo-personal/$location'
+    | '/prestamos/remodelacion-de-inmueble/$location'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
     | '/prestamos/remodelacion-de-inmueble'
-    | '/propiedades/$propertyId'
-    | '/blog'
-    | '/propiedades'
   id:
     | '__root__'
     | '/'
     | '/blog'
     | '/calcular-credito'
+    | '/cobertura'
+    | '/locales'
     | '/prestamos'
     | '/propiedades'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/locales/$slug'
     | '/prestamos/capital-de-inversion'
     | '/prestamos/consolidacion-de-deudas'
     | '/prestamos/prestamo-personal'
@@ -205,12 +329,22 @@ export interface FileRouteTypes {
     | '/propiedades/$propertyId'
     | '/blog/'
     | '/propiedades/'
+    | '/prestamos/capital-de-inversion/$location'
+    | '/prestamos/consolidacion-de-deudas/$location'
+    | '/prestamos/prestamo-personal/$location'
+    | '/prestamos/remodelacion-de-inmueble/$location'
+    | '/prestamos/capital-de-inversion/'
+    | '/prestamos/consolidacion-de-deudas/'
+    | '/prestamos/prestamo-personal/'
+    | '/prestamos/remodelacion-de-inmueble/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRouteWithChildren
   CalcularCreditoRoute: typeof CalcularCreditoRoute
+  CoberturaRoute: typeof CoberturaRoute
+  LocalesRoute: typeof LocalesRouteWithChildren
   PrestamosRoute: typeof PrestamosRouteWithChildren
   PropiedadesRoute: typeof PropiedadesRouteWithChildren
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -245,6 +379,20 @@ declare module '@tanstack/react-router' {
       path: '/prestamos'
       fullPath: '/prestamos'
       preLoaderRoute: typeof PrestamosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locales': {
+      id: '/locales'
+      path: '/locales'
+      fullPath: '/locales'
+      preLoaderRoute: typeof LocalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cobertura': {
+      id: '/cobertura'
+      path: '/cobertura'
+      fullPath: '/cobertura'
+      preLoaderRoute: typeof CoberturaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calcular-credito': {
@@ -317,12 +465,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrestamosCapitalDeInversionRouteImport
       parentRoute: typeof PrestamosRoute
     }
+    '/locales/$slug': {
+      id: '/locales/$slug'
+      path: '/$slug'
+      fullPath: '/locales/$slug'
+      preLoaderRoute: typeof LocalesSlugRouteImport
+      parentRoute: typeof LocalesRoute
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
+    }
+    '/prestamos/remodelacion-de-inmueble/': {
+      id: '/prestamos/remodelacion-de-inmueble/'
+      path: '/'
+      fullPath: '/prestamos/remodelacion-de-inmueble/'
+      preLoaderRoute: typeof PrestamosRemodelacionDeInmuebleIndexRouteImport
+      parentRoute: typeof PrestamosRemodelacionDeInmuebleRoute
+    }
+    '/prestamos/prestamo-personal/': {
+      id: '/prestamos/prestamo-personal/'
+      path: '/'
+      fullPath: '/prestamos/prestamo-personal/'
+      preLoaderRoute: typeof PrestamosPrestamoPersonalIndexRouteImport
+      parentRoute: typeof PrestamosPrestamoPersonalRoute
+    }
+    '/prestamos/consolidacion-de-deudas/': {
+      id: '/prestamos/consolidacion-de-deudas/'
+      path: '/'
+      fullPath: '/prestamos/consolidacion-de-deudas/'
+      preLoaderRoute: typeof PrestamosConsolidacionDeDeudasIndexRouteImport
+      parentRoute: typeof PrestamosConsolidacionDeDeudasRoute
+    }
+    '/prestamos/capital-de-inversion/': {
+      id: '/prestamos/capital-de-inversion/'
+      path: '/'
+      fullPath: '/prestamos/capital-de-inversion/'
+      preLoaderRoute: typeof PrestamosCapitalDeInversionIndexRouteImport
+      parentRoute: typeof PrestamosCapitalDeInversionRoute
+    }
+    '/prestamos/remodelacion-de-inmueble/$location': {
+      id: '/prestamos/remodelacion-de-inmueble/$location'
+      path: '/$location'
+      fullPath: '/prestamos/remodelacion-de-inmueble/$location'
+      preLoaderRoute: typeof PrestamosRemodelacionDeInmuebleLocationRouteImport
+      parentRoute: typeof PrestamosRemodelacionDeInmuebleRoute
+    }
+    '/prestamos/prestamo-personal/$location': {
+      id: '/prestamos/prestamo-personal/$location'
+      path: '/$location'
+      fullPath: '/prestamos/prestamo-personal/$location'
+      preLoaderRoute: typeof PrestamosPrestamoPersonalLocationRouteImport
+      parentRoute: typeof PrestamosPrestamoPersonalRoute
+    }
+    '/prestamos/consolidacion-de-deudas/$location': {
+      id: '/prestamos/consolidacion-de-deudas/$location'
+      path: '/$location'
+      fullPath: '/prestamos/consolidacion-de-deudas/$location'
+      preLoaderRoute: typeof PrestamosConsolidacionDeDeudasLocationRouteImport
+      parentRoute: typeof PrestamosConsolidacionDeDeudasRoute
+    }
+    '/prestamos/capital-de-inversion/$location': {
+      id: '/prestamos/capital-de-inversion/$location'
+      path: '/$location'
+      fullPath: '/prestamos/capital-de-inversion/$location'
+      preLoaderRoute: typeof PrestamosCapitalDeInversionLocationRouteImport
+      parentRoute: typeof PrestamosCapitalDeInversionRoute
     }
   }
 }
@@ -339,18 +550,103 @@ const BlogRouteChildren: BlogRouteChildren = {
 
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
+interface LocalesRouteChildren {
+  LocalesSlugRoute: typeof LocalesSlugRoute
+}
+
+const LocalesRouteChildren: LocalesRouteChildren = {
+  LocalesSlugRoute: LocalesSlugRoute,
+}
+
+const LocalesRouteWithChildren =
+  LocalesRoute._addFileChildren(LocalesRouteChildren)
+
+interface PrestamosCapitalDeInversionRouteChildren {
+  PrestamosCapitalDeInversionLocationRoute: typeof PrestamosCapitalDeInversionLocationRoute
+  PrestamosCapitalDeInversionIndexRoute: typeof PrestamosCapitalDeInversionIndexRoute
+}
+
+const PrestamosCapitalDeInversionRouteChildren: PrestamosCapitalDeInversionRouteChildren =
+  {
+    PrestamosCapitalDeInversionLocationRoute:
+      PrestamosCapitalDeInversionLocationRoute,
+    PrestamosCapitalDeInversionIndexRoute:
+      PrestamosCapitalDeInversionIndexRoute,
+  }
+
+const PrestamosCapitalDeInversionRouteWithChildren =
+  PrestamosCapitalDeInversionRoute._addFileChildren(
+    PrestamosCapitalDeInversionRouteChildren,
+  )
+
+interface PrestamosConsolidacionDeDeudasRouteChildren {
+  PrestamosConsolidacionDeDeudasLocationRoute: typeof PrestamosConsolidacionDeDeudasLocationRoute
+  PrestamosConsolidacionDeDeudasIndexRoute: typeof PrestamosConsolidacionDeDeudasIndexRoute
+}
+
+const PrestamosConsolidacionDeDeudasRouteChildren: PrestamosConsolidacionDeDeudasRouteChildren =
+  {
+    PrestamosConsolidacionDeDeudasLocationRoute:
+      PrestamosConsolidacionDeDeudasLocationRoute,
+    PrestamosConsolidacionDeDeudasIndexRoute:
+      PrestamosConsolidacionDeDeudasIndexRoute,
+  }
+
+const PrestamosConsolidacionDeDeudasRouteWithChildren =
+  PrestamosConsolidacionDeDeudasRoute._addFileChildren(
+    PrestamosConsolidacionDeDeudasRouteChildren,
+  )
+
+interface PrestamosPrestamoPersonalRouteChildren {
+  PrestamosPrestamoPersonalLocationRoute: typeof PrestamosPrestamoPersonalLocationRoute
+  PrestamosPrestamoPersonalIndexRoute: typeof PrestamosPrestamoPersonalIndexRoute
+}
+
+const PrestamosPrestamoPersonalRouteChildren: PrestamosPrestamoPersonalRouteChildren =
+  {
+    PrestamosPrestamoPersonalLocationRoute:
+      PrestamosPrestamoPersonalLocationRoute,
+    PrestamosPrestamoPersonalIndexRoute: PrestamosPrestamoPersonalIndexRoute,
+  }
+
+const PrestamosPrestamoPersonalRouteWithChildren =
+  PrestamosPrestamoPersonalRoute._addFileChildren(
+    PrestamosPrestamoPersonalRouteChildren,
+  )
+
+interface PrestamosRemodelacionDeInmuebleRouteChildren {
+  PrestamosRemodelacionDeInmuebleLocationRoute: typeof PrestamosRemodelacionDeInmuebleLocationRoute
+  PrestamosRemodelacionDeInmuebleIndexRoute: typeof PrestamosRemodelacionDeInmuebleIndexRoute
+}
+
+const PrestamosRemodelacionDeInmuebleRouteChildren: PrestamosRemodelacionDeInmuebleRouteChildren =
+  {
+    PrestamosRemodelacionDeInmuebleLocationRoute:
+      PrestamosRemodelacionDeInmuebleLocationRoute,
+    PrestamosRemodelacionDeInmuebleIndexRoute:
+      PrestamosRemodelacionDeInmuebleIndexRoute,
+  }
+
+const PrestamosRemodelacionDeInmuebleRouteWithChildren =
+  PrestamosRemodelacionDeInmuebleRoute._addFileChildren(
+    PrestamosRemodelacionDeInmuebleRouteChildren,
+  )
+
 interface PrestamosRouteChildren {
-  PrestamosCapitalDeInversionRoute: typeof PrestamosCapitalDeInversionRoute
-  PrestamosConsolidacionDeDeudasRoute: typeof PrestamosConsolidacionDeDeudasRoute
-  PrestamosPrestamoPersonalRoute: typeof PrestamosPrestamoPersonalRoute
-  PrestamosRemodelacionDeInmuebleRoute: typeof PrestamosRemodelacionDeInmuebleRoute
+  PrestamosCapitalDeInversionRoute: typeof PrestamosCapitalDeInversionRouteWithChildren
+  PrestamosConsolidacionDeDeudasRoute: typeof PrestamosConsolidacionDeDeudasRouteWithChildren
+  PrestamosPrestamoPersonalRoute: typeof PrestamosPrestamoPersonalRouteWithChildren
+  PrestamosRemodelacionDeInmuebleRoute: typeof PrestamosRemodelacionDeInmuebleRouteWithChildren
 }
 
 const PrestamosRouteChildren: PrestamosRouteChildren = {
-  PrestamosCapitalDeInversionRoute: PrestamosCapitalDeInversionRoute,
-  PrestamosConsolidacionDeDeudasRoute: PrestamosConsolidacionDeDeudasRoute,
-  PrestamosPrestamoPersonalRoute: PrestamosPrestamoPersonalRoute,
-  PrestamosRemodelacionDeInmuebleRoute: PrestamosRemodelacionDeInmuebleRoute,
+  PrestamosCapitalDeInversionRoute:
+    PrestamosCapitalDeInversionRouteWithChildren,
+  PrestamosConsolidacionDeDeudasRoute:
+    PrestamosConsolidacionDeDeudasRouteWithChildren,
+  PrestamosPrestamoPersonalRoute: PrestamosPrestamoPersonalRouteWithChildren,
+  PrestamosRemodelacionDeInmuebleRoute:
+    PrestamosRemodelacionDeInmuebleRouteWithChildren,
 }
 
 const PrestamosRouteWithChildren = PrestamosRoute._addFileChildren(
@@ -375,6 +671,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRouteWithChildren,
   CalcularCreditoRoute: CalcularCreditoRoute,
+  CoberturaRoute: CoberturaRoute,
+  LocalesRoute: LocalesRouteWithChildren,
   PrestamosRoute: PrestamosRouteWithChildren,
   PropiedadesRoute: PropiedadesRouteWithChildren,
   RobotsDottxtRoute: RobotsDottxtRoute,

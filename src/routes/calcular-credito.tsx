@@ -419,6 +419,27 @@ function ContactForm({
   const [tipo, setTipo] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [attribution, setAttribution] = useState({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_content: '',
+    utm_term: '',
+    gclid: '',
+    fbclid: '',
+  });
+
+  useEffect(() => {
+    setAttribution({
+      utm_source: localStorage.getItem('utm_source') ?? '',
+      utm_medium: localStorage.getItem('utm_medium') ?? '',
+      utm_campaign: localStorage.getItem('utm_campaign') ?? '',
+      utm_content: localStorage.getItem('utm_content') ?? '',
+      utm_term: localStorage.getItem('utm_term') ?? '',
+      gclid: localStorage.getItem('gclid') ?? '',
+      fbclid: localStorage.getItem('fbclid') ?? '',
+    });
+  }, []);
 
   // Sync when parent passes a new prefill amount (calculator → form)
   useEffect(() => {
@@ -427,23 +448,50 @@ function ContactForm({
     }
   }, [prefillAmount]);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
+
+    const payload = {
+      nombre,
+      telefono,
+      correo,
+      monto,
+      loan_type: tipo,
+      mensaje,
+      form_name: "contact_form",
+      timestamp: new Date().toISOString(),
+      ...attribution,
+    };
+
+    try {
+      const response = await fetch(
+        "https://hook.us2.make.com/db7sewijo2icw3dt17bkc3hfonbzuaep",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
       toast.success("¡Tu solicitud fue enviada! Te contactaremos pronto.");
-      trackEvent("lead_submission", {
-        loan_type: tipo,
-        form_name: "contact_form",
-      });
+      trackEvent("lead_submission", payload);
       setNombre("");
       setTelefono("");
       setCorreo("");
       setMonto("");
       setTipo("");
       setMensaje("");
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Hubo un error al enviar tu solicitud. Por favor intentá de nuevo.");
+    } finally {
       setSubmitting(false);
-    }, 600);
+    }
   }
 
   const inputClass =

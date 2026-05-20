@@ -1,10 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { AnacoLogo } from "./AnacoBanner";
+import FooterLocations from "./FooterLocations";
 
 export default function Footer() {
   return (
     <footer className="bg-background px-6 py-16">
-      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[2fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Link to="/"><AnacoLogo className="h-14 w-14" /></Link>
@@ -38,6 +39,8 @@ export default function Footer() {
             <li><a href="#" className="hover:text-foreground">Privacy policy</a></li>
           </ul>
         </div>
+
+        <FooterLocations />
       </div>
     </footer>
   );
