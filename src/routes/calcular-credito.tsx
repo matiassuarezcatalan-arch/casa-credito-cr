@@ -573,10 +573,10 @@ function ContactForm({
           <option value="" disabled>
             Seleccioná una opción
           </option>
-          <option value="consolidacion">Consolidación de Deudas</option>
-          <option value="personal">Préstamo de uso Personal</option>
-          <option value="inversion">Capital de Inversión</option>
-          <option value="remodelacion">Remodelación de Inmueble</option>
+          <option value="Consolidacion de Deudas">Consolidación de Deudas</option>
+          <option value="Prestamo de Uso Personal">Préstamo de uso Personal</option>
+          <option value="Capital de Inversion">Capital de Inversión</option>
+          <option value="Remodelacion de Inmueble">Remodelación de Inmueble</option>
         </select>
       </div>
 
