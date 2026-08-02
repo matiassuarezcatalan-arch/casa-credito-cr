@@ -2,7 +2,7 @@ import heroImage from "@/assets/ANACO_Hero_extralarge.jpg";
 
 export default function HeroSection() {
   return (
-    <section className="px-6 pb-12 pt-4">
+    <section className="px-4 pb-12 pt-4 lg:px-6">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl">
         <img
           src={heroImage}
@@ -13,7 +13,7 @@ export default function HeroSection() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
         <div className="absolute inset-0 flex items-center">
-          <div className="max-w-xl px-8 md:px-16">
+          <div className="max-w-xl px-5 md:px-10 lg:px-16">
             <p className="mb-3 text-sm font-medium text-primary-foreground/80">
               ¿Necesitás Dinero y Tenés una Propiedad?
             </p>
