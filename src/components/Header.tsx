@@ -33,9 +33,9 @@ export default function Header() {
         scrolled ? "shadow-md" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link to="/" className="flex items-center" onClick={() => setMenuOpen(false)}>
-          <AnacoLogo className="h-10 w-10" />
+          <AnacoLogo className="h-12 w-12" />
         </Link>
 
         {/* Desktop nav */}
@@ -78,7 +78,7 @@ export default function Header() {
           className="flex items-center justify-center rounded-xl p-2 text-foreground transition-colors hover:bg-muted md:hidden"
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
         >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 

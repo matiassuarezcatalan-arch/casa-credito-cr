@@ -2,7 +2,7 @@ import heroImage from "@/assets/ANACO_Hero_extralarge.jpg";
 
 export default function HeroSection() {
   return (
-    <section className="px-4 pb-12 pt-4 lg:px-6">
+    <section className="px-4 pb-8 pt-2 lg:px-6">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl">
         <img
           src={heroImage}
